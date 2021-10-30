@@ -1,0 +1,52 @@
+
+Разработка UserEditForm
+
+LoadEntityToForm
+LoadFormToEntity
+
+ShowForCreate()
+ShowForEdit(identity)
+
+
+
+
+
+Разработка Choiser
+
+	
+---
+
+
+
+
+!Разработка LogService
+!Разработка EventListForm
+
+-- 26 
+
++Подбор иконок
++Разработка UserListForm
++Доработка DatabaseService
+
+--- 22 ---
+
++Разработка TableView
+
+--- 18.10.2021 ---
+
++Разработка MessagesService
++Разработка MessagesForm
+
++Доработка DatabaseService
++Разработка AuthService
++Разработка LoginForm
+
+--- 17.10.2021 ---
+
++Разработка MainForm
++Разработка AboutForm
+
++Разработка Env
+
++Разработка ChangeService
++Разработка DatabaseService

@@ -1,0 +1,126 @@
+User
+	Id
+	Name
+	Email
+	Password
+	Role (Admin, View, Guest)
+
+Group
+	Id
+	Name
+	Comment
+	StartAt (Date)
+	EndAt (Date)
+
+Student
+	Id
+	UserId
+	GroupId
+
+Subject
+	Id
+	Name
+	Comment
+	CreatedAt
+	
+GroupSubjectHours
+	GroupId
+	SubjectId
+	Hours
+
+Car
+	Id
+	Name
+	Number
+	Comment
+	
+Teacher
+	Id
+	UserId
+	SubjectId
+	PinnedCarId
+	IsWorked
+	CreatedAt DateTime
+	
+Lesson
+	Id
+	StudentId
+	TeacherId
+	IsPassed
+	Hours
+	StartAt (DateTime)
+
+Event
+	Id
+	UserId
+	ObjectId
+	ObjectType
+	EventType
+	Description
+	CreatedAt (DateTime)
+
+---
+
+MainForm
+	Справочники
+	Отчеты
+	О программе
+
+AboutForm
+
+LoginForm
+
+UserListForm
+	Единичное выделение
+	Поиск
+UserEditForm
+
+GroupListForm
+	Единичное выделение
+	Поиск
+GroupEditForm
+	GroupSubjectHours
+	
+StudentListForm
+	Единичное выделение
+	Поиск
+		Поиск по одной группе или по всем (Выбор при помощи groupList)
+StudentEditForm
+
+SubjectListForm
+SubjectEditForm
+
+CarListForm
+CarEditForm
+
+TeacherListForm
+TeacherEditForm
+
+LessonListForm
+	Поиск
+		По дате
+		По группе
+		По учителю
+		По студенту
+LessonEditForm
+	Создание урока для группы или для одного студента
+
+EventListForm
+
+
+
+TeachersWorkedReportForm
+LessonsHoursReportForm
+CarsHoursReportForm
+
+---
+ChangeService
+LogService
+MessagesService
+
+AuthService
+
+DatabaseService
+
+Choiser
+TableView
