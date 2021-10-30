@@ -48,7 +48,7 @@ namespace AutoschoolAIS.Controls
             AllowUserToDeleteRows = false;
             AllowUserToResizeRows = false;
 
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            if (!Env.DesignMode)
             {
                 Columns.Add(_selectColumn);
             }

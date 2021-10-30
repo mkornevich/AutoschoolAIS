@@ -84,7 +84,10 @@ namespace AutoschoolAIS.Controls
         public IdsChooser()
         {
             ClickChoose += ClickChooseAct;
-            Env.Change.DatabaseChanged += UpdateText;
+            if (!Env.DesignMode)
+            {
+                Env.Change.DatabaseChanged += UpdateText;
+            }
         }
 
         private void ClickChooseAct(object sender, EventArgs e)
