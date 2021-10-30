@@ -26,7 +26,6 @@ namespace AutoschoolAIS.Controls
             Location = new Point(2, 3),
             Size = new Size(261, 13),
             ReadOnly = true,
-            Text = "This is text",
             Anchor = AnchorStyles.Left | AnchorStyles.Right,
         };
 

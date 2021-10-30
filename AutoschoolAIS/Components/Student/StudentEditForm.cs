@@ -1,4 +1,5 @@
-﻿using AutoschoolAIS.Components.User;
+﻿using AutoschoolAIS.Components.Group;
+using AutoschoolAIS.Components.User;
 using AutoschoolAIS.Utils;
 using System;
 using System.Collections.Generic;
@@ -22,20 +23,21 @@ namespace AutoschoolAIS.Components.Student
 
             userIC.SqlGetTextById = "SELECT [Name] FROM [User] WHERE Id = @Id";
             userIC.BuildTableViewFunction = () => new UserListForm().usersTV;
+
+            groupIC.SqlGetTextById = "SELECT [Name] FROM [Group] WHERE Id = @Id";
+            groupIC.BuildTableViewFunction = () => new GroupListForm().groupsTV;
         }
 
         private void DataRowToForm()
         {
-            //userTB.Text = _row["UserId"].ToString();
-            userIC.Ids = new List<int>() { (int)_row["UserId"] };
-            groupTB.Text = _row["GroupId"].ToString();
+            userIC.Id = (int)_row["UserId"];
+            groupIC.Id = (int)_row["GroupId"];
         }
 
         private void FormToDataRow()
         {
-           // _row["UserId"] = int.Parse(userTB.Text);
-            _row["UserId"] = userIC.Ids[0];
-            _row["GroupId"] = int.Parse(groupTB.Text);
+            _row["UserId"] = userIC.Id;
+            _row["GroupId"] = groupIC.Id;
         }
 
         private bool ValidateForm()

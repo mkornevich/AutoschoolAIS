@@ -201,11 +201,11 @@ namespace AutoschoolAIS.Components.Group
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripTextBox searchTB;
         private System.Windows.Forms.ToolStripButton searchBtn;
-        private Controls.TableView groupsTV;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartAtColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndAtColumn;
+        public Controls.TableView groupsTV;
     }
 }

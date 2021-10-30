@@ -31,8 +31,6 @@ namespace AutoschoolAIS.Components.Student
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentEditForm));
             this.label1 = new System.Windows.Forms.Label();
-            this.userTB = new System.Windows.Forms.TextBox();
-            this.groupTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.okBtn = new System.Windows.Forms.ToolStripButton();
@@ -50,20 +48,6 @@ namespace AutoschoolAIS.Components.Student
             this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Пользователь";
-            // 
-            // userTB
-            // 
-            this.userTB.Location = new System.Drawing.Point(12, 41);
-            this.userTB.Name = "userTB";
-            this.userTB.Size = new System.Drawing.Size(259, 20);
-            this.userTB.TabIndex = 1;
-            // 
-            // groupTB
-            // 
-            this.groupTB.Location = new System.Drawing.Point(12, 80);
-            this.groupTB.Name = "groupTB";
-            this.groupTB.Size = new System.Drawing.Size(259, 20);
-            this.groupTB.TabIndex = 2;
             // 
             // label2
             // 
@@ -110,9 +94,9 @@ namespace AutoschoolAIS.Components.Student
             this.userIC.BackColor = System.Drawing.SystemColors.Window;
             this.userIC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.userIC.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("userIC.Ids")));
-            this.userIC.Location = new System.Drawing.Point(12, 139);
+            this.userIC.Location = new System.Drawing.Point(12, 41);
             this.userIC.Name = "userIC";
-            this.userIC.Size = new System.Drawing.Size(259, 20);
+            this.userIC.Size = new System.Drawing.Size(260, 20);
             this.userIC.SqlGetTextById = null;
             this.userIC.TabIndex = 5;
             this.userIC.Text = "This is text";
@@ -122,9 +106,9 @@ namespace AutoschoolAIS.Components.Student
             this.groupIC.BackColor = System.Drawing.SystemColors.Window;
             this.groupIC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.groupIC.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("groupIC.Ids")));
-            this.groupIC.Location = new System.Drawing.Point(12, 176);
+            this.groupIC.Location = new System.Drawing.Point(12, 80);
             this.groupIC.Name = "groupIC";
-            this.groupIC.Size = new System.Drawing.Size(259, 20);
+            this.groupIC.Size = new System.Drawing.Size(260, 20);
             this.groupIC.SqlGetTextById = null;
             this.groupIC.TabIndex = 6;
             this.groupIC.Text = "This is text";
@@ -133,13 +117,11 @@ namespace AutoschoolAIS.Components.Student
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 239);
+            this.ClientSize = new System.Drawing.Size(284, 116);
             this.Controls.Add(this.groupIC);
             this.Controls.Add(this.userIC);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.groupTB);
-            this.Controls.Add(this.userTB);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -156,8 +138,6 @@ namespace AutoschoolAIS.Components.Student
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox userTB;
-        private System.Windows.Forms.TextBox groupTB;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton okBtn;

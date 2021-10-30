@@ -31,6 +31,8 @@ namespace AutoschoolAIS.Components.User
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserEditForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.okBtn = new System.Windows.Forms.ToolStripButton();
+            this.cancelBtn = new System.Windows.Forms.ToolStripButton();
             this.nameTB = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.emailTB = new System.Windows.Forms.TextBox();
@@ -40,9 +42,6 @@ namespace AutoschoolAIS.Components.User
             this.label4 = new System.Windows.Forms.Label();
             this.roleCB = new System.Windows.Forms.ComboBox();
             this.passwordVisibleCB = new System.Windows.Forms.CheckBox();
-            this.okBtn = new System.Windows.Forms.ToolStripButton();
-            this.cancelBtn = new System.Windows.Forms.ToolStripButton();
-            this.chooser1 = new AutoschoolAIS.Controls.Chooser();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +55,26 @@ namespace AutoschoolAIS.Components.User
             this.toolStrip1.Size = new System.Drawing.Size(322, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "Записать";
+            // 
+            // okBtn
+            // 
+            this.okBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.okBtn.Image = global::AutoschoolAIS.Properties.Resources.ok_16;
+            this.okBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.okBtn.Name = "okBtn";
+            this.okBtn.Size = new System.Drawing.Size(23, 22);
+            this.okBtn.Text = "Записать";
+            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.cancelBtn.Image = global::AutoschoolAIS.Properties.Resources.error_16;
+            this.cancelBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(23, 22);
+            this.cancelBtn.Text = "Отмена";
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // nameTB
             // 
@@ -138,41 +157,11 @@ namespace AutoschoolAIS.Components.User
             this.passwordVisibleCB.UseVisualStyleBackColor = true;
             this.passwordVisibleCB.CheckedChanged += new System.EventHandler(this.passwordVisibleCB_CheckedChanged);
             // 
-            // okBtn
-            // 
-            this.okBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.okBtn.Image = global::AutoschoolAIS.Properties.Resources.ok_16;
-            this.okBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(23, 22);
-            this.okBtn.Text = "Записать";
-            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cancelBtn.Image = global::AutoschoolAIS.Properties.Resources.error_16;
-            this.cancelBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(23, 22);
-            this.cancelBtn.Text = "Отмена";
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
-            // 
-            // chooser1
-            // 
-            this.chooser1.BackColor = System.Drawing.SystemColors.Window;
-            this.chooser1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.chooser1.Location = new System.Drawing.Point(12, 205);
-            this.chooser1.Name = "chooser1";
-            this.chooser1.Size = new System.Drawing.Size(298, 20);
-            this.chooser1.TabIndex = 10;
-            // 
             // UserEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 381);
-            this.Controls.Add(this.chooser1);
+            this.ClientSize = new System.Drawing.Size(322, 193);
             this.Controls.Add(this.passwordVisibleCB);
             this.Controls.Add(this.roleCB);
             this.Controls.Add(this.label4);
@@ -210,6 +199,5 @@ namespace AutoschoolAIS.Components.User
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox roleCB;
         private System.Windows.Forms.CheckBox passwordVisibleCB;
-        private Controls.Chooser chooser1;
     }
 }

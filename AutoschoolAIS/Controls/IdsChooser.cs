@@ -31,6 +31,48 @@ namespace AutoschoolAIS.Controls
             }
         }
 
+        public int? Id
+        {
+            get
+            {
+                if (Ids.Count != 1)
+                {
+                    return null;
+                }
+                return Ids[0];
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new Exception("Id need to be not null.");
+                }
+                Ids = new List<int>() { (int)value };
+            }
+        }
+
+        private bool _isMultiselect = false;
+
+        public bool IsMultiselect
+        {
+            get
+            {
+                if (_tableView != null)
+                {
+                    return _tableView.IsMultiselect;
+                }
+                return _isMultiselect;
+            }
+            set
+            {
+                if (_tableView != null)
+                {
+                    _tableView.IsMultiselect = value;
+                }
+                _isMultiselect = value;
+            }
+        }
+
         public event Action IdsChanged;
 
         public Func<TableView> BuildTableViewFunction;
@@ -42,6 +84,7 @@ namespace AutoschoolAIS.Controls
         public IdsChooser()
         {
             ClickChoose += ClickChooseAct;
+            Env.Change.DatabaseChanged += UpdateText;
         }
 
         private void ClickChooseAct(object sender, EventArgs e)
@@ -51,6 +94,7 @@ namespace AutoschoolAIS.Controls
                 _tableView = BuildTableViewFunction();
                 _tableView.SelectBoxClick += OnIdsChanged;
                 _tableView.Ids = _ids;
+                _tableView.IsMultiselect = _isMultiselect;
                 _tableView.FindForm().MdiParent = Env.MainForm;
                 _tableView.FindForm().FormClosed += FormClosedAct;
             }
@@ -58,14 +102,8 @@ namespace AutoschoolAIS.Controls
             _tableView.FindForm().Show();
         }
 
-        private void SelectBoxClickAct()
-        {
-            IdsChanged?.Invoke();
-        }
-
         private void FormClosedAct(object sender, System.Windows.Forms.FormClosedEventArgs e)
         {
-            _tableView.SelectBoxClick -= SelectBoxClickAct;
             _tableView.SelectBoxClick -= OnIdsChanged;
             _tableView = null;
         }

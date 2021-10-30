@@ -75,7 +75,7 @@ namespace AutoschoolAIS.Controls
                 return;
             }
 
-            if (IsMultiselect)
+            if (!IsMultiselect)
             {
                 foreach (DataGridViewRow row in Rows)
                 {
@@ -84,6 +84,7 @@ namespace AutoschoolAIS.Controls
                         row.Cells["SelectColumn"].Value = false;
                     }
                 }
+                _ids.Clear();
             }
             
             var selectCell = Rows[e.RowIndex].Cells[e.ColumnIndex];
