@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SqlKata.Compilers;
+using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -7,22 +9,22 @@ using System.Threading.Tasks;
 
 namespace AutoschoolAIS.Services
 {
-    public class DatabaseService
+    public class DatabaseService : QueryFactory
     {
         private string _connectionString;
 
-        public SqlConnection Connection { get; private set; }
 
         public DatabaseService(string connectionString)
         {
             _connectionString = connectionString;
             Connection = new SqlConnection(_connectionString);
+            Compiler = new SqlServerCompiler();
             Connection.Open();
         }
 
         public SqlCommand CreateCommand(string sql)
         {
-            return new SqlCommand(sql, Connection);
+            return new SqlCommand(sql, (SqlConnection)Connection);
         }
 
         public SqlDataAdapter CreateDataAdapter(string sql)

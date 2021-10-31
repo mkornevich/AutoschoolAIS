@@ -37,14 +37,14 @@ namespace AutoschoolAIS.Components.Group
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.searchTB = new System.Windows.Forms.ToolStripTextBox();
             this.searchBtn = new System.Windows.Forms.ToolStripButton();
-            this.groupsTV = new AutoschoolAIS.Controls.TableView();
+            this.tableView = new AutoschoolAIS.Controls.TableView();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CommentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartAtColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndAtColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupsTV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableView)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -114,29 +114,29 @@ namespace AutoschoolAIS.Components.Group
             // 
             // groupsTV
             // 
-            this.groupsTV.AllowUserToAddRows = false;
-            this.groupsTV.AllowUserToDeleteRows = false;
-            this.groupsTV.AllowUserToResizeRows = false;
-            this.groupsTV.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.groupsTV.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.groupsTV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.groupsTV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tableView.AllowUserToAddRows = false;
+            this.tableView.AllowUserToDeleteRows = false;
+            this.tableView.AllowUserToResizeRows = false;
+            this.tableView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.tableView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdColumn,
             this.NameColumn,
             this.CommentColumn,
             this.StartAtColumn,
             this.EndAtColumn});
-            this.groupsTV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupsTV.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("groupsTV.Ids")));
-            this.groupsTV.IsMultiselect = false;
-            this.groupsTV.Location = new System.Drawing.Point(0, 25);
-            this.groupsTV.MultiSelect = false;
-            this.groupsTV.Name = "groupsTV";
-            this.groupsTV.ReadOnly = true;
-            this.groupsTV.RowHeadersVisible = false;
-            this.groupsTV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.groupsTV.Size = new System.Drawing.Size(800, 425);
-            this.groupsTV.TabIndex = 1;
+            this.tableView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableView.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("groupsTV.Ids")));
+            this.tableView.IsMultiselect = false;
+            this.tableView.Location = new System.Drawing.Point(0, 25);
+            this.tableView.MultiSelect = false;
+            this.tableView.Name = "groupsTV";
+            this.tableView.ReadOnly = true;
+            this.tableView.RowHeadersVisible = false;
+            this.tableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tableView.Size = new System.Drawing.Size(800, 425);
+            this.tableView.TabIndex = 1;
             // 
             // IdColumn
             // 
@@ -179,14 +179,14 @@ namespace AutoschoolAIS.Components.Group
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupsTV);
+            this.Controls.Add(this.tableView);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GroupListForm";
             this.Text = "Группы";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupsTV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,6 +206,6 @@ namespace AutoschoolAIS.Components.Group
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartAtColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndAtColumn;
-        public Controls.TableView groupsTV;
+        public Controls.TableView tableView;
     }
 }

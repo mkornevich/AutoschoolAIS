@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,33 @@ namespace AutoschoolAIS.Controls
             }
         }
 
+        public IEnumerable<dynamic> DataSourceDynamic
+        {
+            set
+            {
+                var rows = value.ToArray();
+
+                if (rows.Count() == 0)
+                {
+                    return;
+                }
+
+                var dataTable = new DataTable();
+
+                foreach (var pair in (IDictionary<string, object>)rows[0])
+                {
+                    dataTable.Columns.Add(pair.Key, pair.Value.GetType());
+                }
+
+                foreach (var row in rows)
+                {
+                    dataTable.Rows.Add(((IDictionary<string, object>)row).Values.ToArray());
+                }
+
+                DataSource = dataTable;
+            }
+        }
+
         public TableView()
         {
             BorderStyle = BorderStyle.None;
@@ -52,7 +80,7 @@ namespace AutoschoolAIS.Controls
             {
                 Columns.Add(_selectColumn);
             }
-            
+
             CellContentClick += CellContentClickAct;
             DataBindingComplete += (s, e) => LoadIdsToTable();
         }
@@ -86,7 +114,7 @@ namespace AutoschoolAIS.Controls
                 }
                 _ids.Clear();
             }
-            
+
             var selectCell = Rows[e.RowIndex].Cells[e.ColumnIndex];
             selectCell.Value = !Convert.ToBoolean(selectCell.Value);
             int id = (int)Rows[selectCell.RowIndex].Cells["IdColumn"].Value;

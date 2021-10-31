@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SqlKata.Compilers;
+using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,35 +23,26 @@ namespace AutoschoolAIS.Components.User
 
         private void ReloadTable()
         {
-            var adapter = Env.Database.CreateDataAdapter(
-                "SELECT Id, [Name], Email, [Role] FROM [User]");
-            var dataSet = new DataSet();
-            adapter.Fill(dataSet);
-            usersTV.DataSource = dataSet.Tables[0];
+            tableView.DataSourceDynamic = Env.Db.Query("User").Get();
         }
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            var command = Env.Database.CreateCommand(
-                @"INSERT INTO [User]([Name], Email, Password, [Role]) VALUES (N'Новый пользователь', '', '', 'viewer');
-                SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY];");
-            object id = command.ExecuteScalar();
+            var id = Env.Db.Query("User").InsertGetId<int>(new { Name = "Новый пользователь", Role = "viewer" });
             new UserEditForm().ShowForEdit(id);
             Env.Change.OnDatabaseChanged();
         }
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            var row = ((DataRowView)usersTV.SelectedRows[0].DataBoundItem).Row;
+            var row = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row;
             new UserEditForm().ShowForEdit((int)row["Id"]);
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            var row = ((DataRowView)usersTV.SelectedRows[0].DataBoundItem).Row;
-            var command = Env.Database.CreateCommand( "DELETE FROM [User] WHERE Id = @Id");
-            command.Parameters.AddWithValue("Id", row["Id"]);
-            command.ExecuteNonQuery();
+            object id = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row["Id"];
+            Env.Db.Query("User").Where("Id", id).Delete();
             Env.Change.OnDatabaseChanged();
         }
     }

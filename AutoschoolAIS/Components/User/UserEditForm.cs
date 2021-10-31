@@ -1,4 +1,5 @@
 ﻿using AutoschoolAIS.Utils;
+using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +14,16 @@ namespace AutoschoolAIS.Components.User
 {
     public partial class UserEditForm : Form
     {
+        private dynamic _row;
+
+        private object _identity;
+
         private List<string> _roles = new List<string>()
         {
             "admin",
             "viewer",
             "guest",
         };
-
-        private DataRow _row;
 
         public UserEditForm()
         {
@@ -31,18 +34,18 @@ namespace AutoschoolAIS.Components.User
 
         private void DataRowToForm()
         {
-            nameTB.Text = _row["Name"].ToString();
-            emailTB.Text = _row["Email"].ToString();
-            passwordTB.Text = _row["Password"].ToString();
-            roleCB.SelectedIndex = _roles.IndexOf(_row["Role"].ToString());
+            nameTB.Text = _row.Name;
+            emailTB.Text = _row.Email;
+            passwordTB.Text = _row.Password;
+            roleCB.SelectedIndex = _roles.IndexOf(_row.Role);
         }
 
         private void FormToDataRow()
         {
-            _row["Name"] = nameTB.Text;
-            _row["Email"] = emailTB.Text;
-            _row["Password"] = passwordTB.Text;
-            _row["Role"] = _roles[roleCB.SelectedIndex];
+            _row.Name = nameTB.Text;
+            _row.Email = emailTB.Text;
+            _row.Password = passwordTB.Text;
+            _row.Role = _roles[roleCB.SelectedIndex];
         }
 
         private bool ValidateForm()
@@ -50,27 +53,25 @@ namespace AutoschoolAIS.Components.User
             return true;
         }
 
-        private void LoadDataRow(object identity)
+        private void LoadDataRow()
         {
-            var adapter = Env.Database.CreateDataAdapter(
-                "SELECT * FROM [User] WHERE Id = @Id");
-            adapter.SelectCommand.Parameters.AddWithValue("Id", identity);
-            var dataSet = new DataSet();
-            adapter.Fill(dataSet);
-            _row = dataSet.Tables[0].Rows[0];
+            _row = Env.Db.Query("User")
+                .Select("Name", "Email", "Password", "Role")
+                .Where("Id", _identity)
+                .First<dynamic>();
         }
 
         private void StoreDataRow()
         {
-            var command = Env.Database.CreateCommand("" +
-                "UPDATE [User] SET Name = @Name, Email = @Email, Password = @Password, Role = @Role WHERE Id = @Id");
-            DbUtils.DataRowToParams(_row, command.Parameters);
-            command.ExecuteNonQuery();
+            Env.Db.Query("User")
+                .Where("Id", _identity)
+                .Update((IDictionary<string, object>)_row);
         }
 
         public void ShowForEdit(object identity)
         {
-            LoadDataRow(identity);
+            _identity = identity;
+            LoadDataRow();
             DataRowToForm();
             MdiParent = Env.MainForm;
             Show();

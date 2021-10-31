@@ -48,7 +48,7 @@ namespace AutoschoolAIS.Services.Auth
 
         public bool TryAuthenticate(string email, string password)
         {
-            var adapter = Env.Database.CreateDataAdapter(
+            var adapter = Env.Db.CreateDataAdapter(
                 "SELECT * FROM [User] WHERE Email = @Email AND Password = @Password");
             
             adapter.SelectCommand.Parameters.AddWithValue("@Email", email);

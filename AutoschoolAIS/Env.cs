@@ -20,14 +20,14 @@ namespace AutoschoolAIS
 
         public static ChangeService Change { get; private set; }
 
-        public static DatabaseService Database { get; private set; }
+        public static DatabaseService Db { get; private set; }
 
         public static AuthService Auth { get; private set; }
 
         public static void Init()
         {
             Change = new ChangeService();
-            Database = new DatabaseService(ConnectionString);
+            Db = new DatabaseService(ConnectionString);
             Auth = new AuthService();
 
             MainForm = new MainForm();

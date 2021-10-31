@@ -37,12 +37,12 @@ namespace AutoschoolAIS.Components.Student
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.studentsTV = new AutoschoolAIS.Controls.TableView();
+            this.tableView = new AutoschoolAIS.Controls.TableView();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsTV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableView)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -109,27 +109,27 @@ namespace AutoschoolAIS.Components.Student
             // 
             // studentsTV
             // 
-            this.studentsTV.AllowUserToAddRows = false;
-            this.studentsTV.AllowUserToDeleteRows = false;
-            this.studentsTV.AllowUserToResizeRows = false;
-            this.studentsTV.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.studentsTV.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.studentsTV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.studentsTV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tableView.AllowUserToAddRows = false;
+            this.tableView.AllowUserToDeleteRows = false;
+            this.tableView.AllowUserToResizeRows = false;
+            this.tableView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.tableView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdColumn,
             this.UserNameColumn,
             this.GroupNameColumn});
-            this.studentsTV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.studentsTV.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("studentsTV.Ids")));
-            this.studentsTV.IsMultiselect = false;
-            this.studentsTV.Location = new System.Drawing.Point(0, 25);
-            this.studentsTV.MultiSelect = false;
-            this.studentsTV.Name = "studentsTV";
-            this.studentsTV.ReadOnly = true;
-            this.studentsTV.RowHeadersVisible = false;
-            this.studentsTV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.studentsTV.Size = new System.Drawing.Size(800, 425);
-            this.studentsTV.TabIndex = 3;
+            this.tableView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableView.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("studentsTV.Ids")));
+            this.tableView.IsMultiselect = false;
+            this.tableView.Location = new System.Drawing.Point(0, 25);
+            this.tableView.MultiSelect = false;
+            this.tableView.Name = "studentsTV";
+            this.tableView.ReadOnly = true;
+            this.tableView.RowHeadersVisible = false;
+            this.tableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tableView.Size = new System.Drawing.Size(800, 425);
+            this.tableView.TabIndex = 3;
             // 
             // IdColumn
             // 
@@ -158,14 +158,14 @@ namespace AutoschoolAIS.Components.Student
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.studentsTV);
+            this.Controls.Add(this.tableView);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StudentListForm";
             this.Text = "Студенты";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsTV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,7 +180,7 @@ namespace AutoschoolAIS.Components.Student
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private Controls.TableView studentsTV;
+        private Controls.TableView tableView;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn GroupNameColumn;

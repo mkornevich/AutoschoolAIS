@@ -123,7 +123,7 @@ namespace AutoschoolAIS.Controls
 
             if (Ids.Count == 1 && SqlGetTextById != null)
             {
-                var command = Env.Database.CreateCommand(SqlGetTextById);
+                var command = Env.Db.CreateCommand(SqlGetTextById);
                 command.Parameters.AddWithValue("Id", Ids[0]);
                 Text = (string)command.ExecuteScalar();
             }

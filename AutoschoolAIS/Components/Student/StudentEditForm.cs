@@ -22,10 +22,10 @@ namespace AutoschoolAIS.Components.Student
             InitializeComponent();
 
             userIC.SqlGetTextById = "SELECT [Name] FROM [User] WHERE Id = @Id";
-            userIC.BuildTableViewFunction = () => new UserListForm().usersTV;
+            userIC.BuildTableViewFunction = () => new UserListForm().tableView;
 
             groupIC.SqlGetTextById = "SELECT [Name] FROM [Group] WHERE Id = @Id";
-            groupIC.BuildTableViewFunction = () => new GroupListForm().groupsTV;
+            groupIC.BuildTableViewFunction = () => new GroupListForm().tableView;
         }
 
         private void DataRowToForm()
@@ -47,7 +47,7 @@ namespace AutoschoolAIS.Components.Student
 
         private void LoadDataRow(object identity)
         {
-            var adapter = Env.Database.CreateDataAdapter(
+            var adapter = Env.Db.CreateDataAdapter(
                 "SELECT * FROM [Student] WHERE Id = @Id");
             adapter.SelectCommand.Parameters.AddWithValue("Id", identity);
             var dataSet = new DataSet();
@@ -57,7 +57,7 @@ namespace AutoschoolAIS.Components.Student
 
         private void StoreDataRow()
         {
-            var command = Env.Database.CreateCommand("" +
+            var command = Env.Db.CreateCommand("" +
                 "UPDATE [Student] SET UserId = @UserId, GroupId = @GroupId WHERE Id = @Id");
             DbUtils.DataRowToParams(_row, command.Parameters);
             command.ExecuteNonQuery();

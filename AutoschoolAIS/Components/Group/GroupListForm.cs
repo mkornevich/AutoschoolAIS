@@ -21,15 +21,15 @@ namespace AutoschoolAIS.Components.Group
 
         private void ReloadTable()
         {
-            var adapter = Env.Database.CreateDataAdapter("SELECT * FROM [Group]");
+            var adapter = Env.Db.CreateDataAdapter("SELECT * FROM [Group]");
             var dataSet = new DataSet();
             adapter.Fill(dataSet);
-            groupsTV.DataSource = dataSet.Tables[0];
+            tableView.DataSource = dataSet.Tables[0];
         }
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            var command = Env.Database.CreateCommand(
+            var command = Env.Db.CreateCommand(
                 @"INSERT INTO [Group]([Name], Comment, StartAt, EndAt) VALUES 
                 (N'Новая группа', '', GETDATE(), GETDATE());
                 SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY];");
@@ -40,8 +40,8 @@ namespace AutoschoolAIS.Components.Group
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            var row = ((DataRowView)groupsTV.SelectedRows[0].DataBoundItem).Row;
-            var command = Env.Database.CreateCommand("DELETE FROM [Group] WHERE Id = @Id");
+            var row = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row;
+            var command = Env.Db.CreateCommand("DELETE FROM [Group] WHERE Id = @Id");
             command.Parameters.AddWithValue("Id", row["Id"]);
             command.ExecuteNonQuery();
             Env.Change.OnDatabaseChanged();
@@ -49,7 +49,7 @@ namespace AutoschoolAIS.Components.Group
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            var row = ((DataRowView)groupsTV.SelectedRows[0].DataBoundItem).Row;
+            var row = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row;
             new GroupEditForm().ShowForEdit((int)row["Id"]);
         }
     }

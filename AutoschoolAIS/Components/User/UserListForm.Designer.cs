@@ -37,13 +37,13 @@ namespace AutoschoolAIS.Components.User
             this.deleteBtn = new System.Windows.Forms.ToolStripButton();
             this.editBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.usersTV = new AutoschoolAIS.Controls.TableView();
+            this.tableView = new AutoschoolAIS.Controls.TableView();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RoleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersTV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableView)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -110,28 +110,28 @@ namespace AutoschoolAIS.Components.User
             // 
             // usersTV
             // 
-            this.usersTV.AllowUserToAddRows = false;
-            this.usersTV.AllowUserToDeleteRows = false;
-            this.usersTV.AllowUserToResizeRows = false;
-            this.usersTV.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.usersTV.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.usersTV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.usersTV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tableView.AllowUserToAddRows = false;
+            this.tableView.AllowUserToDeleteRows = false;
+            this.tableView.AllowUserToResizeRows = false;
+            this.tableView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.tableView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdColumn,
             this.NameColumn,
             this.EmailColumn,
             this.RoleColumn});
-            this.usersTV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.usersTV.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("usersTV.Ids")));
-            this.usersTV.IsMultiselect = false;
-            this.usersTV.Location = new System.Drawing.Point(0, 25);
-            this.usersTV.MultiSelect = false;
-            this.usersTV.Name = "usersTV";
-            this.usersTV.ReadOnly = true;
-            this.usersTV.RowHeadersVisible = false;
-            this.usersTV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.usersTV.Size = new System.Drawing.Size(800, 425);
-            this.usersTV.TabIndex = 1;
+            this.tableView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableView.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("usersTV.Ids")));
+            this.tableView.IsMultiselect = false;
+            this.tableView.Location = new System.Drawing.Point(0, 25);
+            this.tableView.MultiSelect = false;
+            this.tableView.Name = "usersTV";
+            this.tableView.ReadOnly = true;
+            this.tableView.RowHeadersVisible = false;
+            this.tableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tableView.Size = new System.Drawing.Size(800, 425);
+            this.tableView.TabIndex = 1;
             // 
             // IdColumn
             // 
@@ -167,14 +167,14 @@ namespace AutoschoolAIS.Components.User
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.usersTV);
+            this.Controls.Add(this.tableView);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserListForm";
             this.Text = "Пользователи";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersTV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,6 +193,6 @@ namespace AutoschoolAIS.Components.User
         private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmailColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn RoleColumn;
-        public Controls.TableView usersTV;
+        public Controls.TableView tableView;
     }
 }

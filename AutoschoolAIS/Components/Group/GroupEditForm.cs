@@ -43,7 +43,7 @@ namespace AutoschoolAIS.Components.Group
 
         private void LoadDataRow(object identity)
         {
-            var adapter = Env.Database.CreateDataAdapter(
+            var adapter = Env.Db.CreateDataAdapter(
                 "SELECT * FROM [Group] WHERE Id = @Id");
             adapter.SelectCommand.Parameters.AddWithValue("Id", identity);
             var dataSet = new DataSet();
@@ -53,7 +53,7 @@ namespace AutoschoolAIS.Components.Group
 
         private void StoreDataRow()
         {
-            var command = Env.Database.CreateCommand("" +
+            var command = Env.Db.CreateCommand("" +
                 "UPDATE [Group] SET Name = @Name, Comment = @Comment, StartAt = @StartAt, EndAt = @EndAt WHERE Id = @Id");
             DbUtils.DataRowToParams(_row, command.Parameters);
             command.ExecuteNonQuery();
