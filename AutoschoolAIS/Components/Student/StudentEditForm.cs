@@ -25,10 +25,10 @@ namespace AutoschoolAIS.Components.Student
             InitializeComponent();
 
             userIC.GetTextById = id => Env.Db.Query("User").Select("Name").Where("Id", id).First().Name;
-            userIC.BuildTableViewFunction = () => new UserListForm().tableView;
+            userIC.BuildTableViewWithForm = () => new UserListForm().tableView;
 
             groupIC.GetTextById = id => Env.Db.Query("Group").Select("Name").Where("Id", id).First().Name;
-            groupIC.BuildTableViewFunction = () => new GroupListForm().tableView;
+            groupIC.BuildTableViewWithForm = () => new GroupListForm().tableView;
         }
 
         private void DataRowToForm()

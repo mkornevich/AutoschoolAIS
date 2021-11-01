@@ -43,6 +43,7 @@ namespace AutoschoolAIS.Components.Group
             this.CommentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartAtColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndAtColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filterBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableView)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +56,8 @@ namespace AutoschoolAIS.Components.Group
             this.editBtn,
             this.toolStripSeparator1,
             this.searchTB,
-            this.searchBtn});
+            this.searchBtn,
+            this.filterBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
@@ -99,9 +101,9 @@ namespace AutoschoolAIS.Components.Group
             // 
             // searchTB
             // 
-            this.searchTB.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.searchTB.Name = "searchTB";
             this.searchTB.Size = new System.Drawing.Size(100, 25);
+            this.searchTB.ToolTipText = "hbh";
             // 
             // searchBtn
             // 
@@ -112,7 +114,7 @@ namespace AutoschoolAIS.Components.Group
             this.searchBtn.Size = new System.Drawing.Size(23, 22);
             this.searchBtn.Text = "toolStripButton4";
             // 
-            // groupsTV
+            // tableView
             // 
             this.tableView.AllowUserToAddRows = false;
             this.tableView.AllowUserToDeleteRows = false;
@@ -127,11 +129,11 @@ namespace AutoschoolAIS.Components.Group
             this.StartAtColumn,
             this.EndAtColumn});
             this.tableView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableView.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("groupsTV.Ids")));
+            this.tableView.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("tableView.Ids")));
             this.tableView.IsMultiselect = false;
             this.tableView.Location = new System.Drawing.Point(0, 25);
             this.tableView.MultiSelect = false;
-            this.tableView.Name = "groupsTV";
+            this.tableView.Name = "tableView";
             this.tableView.ReadOnly = true;
             this.tableView.RowHeadersVisible = false;
             this.tableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -174,6 +176,15 @@ namespace AutoschoolAIS.Components.Group
             this.EndAtColumn.Name = "EndAtColumn";
             this.EndAtColumn.ReadOnly = true;
             // 
+            // filterBtn
+            // 
+            this.filterBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.filterBtn.Image = global::AutoschoolAIS.Properties.Resources.filter_16;
+            this.filterBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.filterBtn.Name = "filterBtn";
+            this.filterBtn.Size = new System.Drawing.Size(23, 22);
+            this.filterBtn.Text = "toolStripButton1";
+            // 
             // GroupListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,5 +218,6 @@ namespace AutoschoolAIS.Components.Group
         private System.Windows.Forms.DataGridViewTextBoxColumn StartAtColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndAtColumn;
         public Controls.TableView tableView;
+        private System.Windows.Forms.ToolStripButton filterBtn;
     }
 }

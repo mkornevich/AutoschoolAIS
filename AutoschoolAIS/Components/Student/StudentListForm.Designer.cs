@@ -35,8 +35,10 @@ namespace AutoschoolAIS.Components.Student
             this.deleteBtn = new System.Windows.Forms.ToolStripButton();
             this.editBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.searchTB = new System.Windows.Forms.ToolStripTextBox();
+            this.filterBtn = new System.Windows.Forms.ToolStripButton();
+            this.reloadBtn = new System.Windows.Forms.ToolStripButton();
             this.tableView = new AutoschoolAIS.Controls.TableView();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,8 +54,10 @@ namespace AutoschoolAIS.Components.Student
             this.deleteBtn,
             this.editBtn,
             this.toolStripSeparator1,
-            this.toolStripTextBox1,
-            this.toolStripButton3});
+            this.toolStripLabel1,
+            this.searchTB,
+            this.filterBtn,
+            this.reloadBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
@@ -91,23 +95,39 @@ namespace AutoschoolAIS.Components.Student
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripTextBox1
+            // toolStripLabel1
             // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
-            this.toolStripTextBox1.Text = "Поиск";
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(42, 22);
+            this.toolStripLabel1.Text = "Поиск";
             // 
-            // toolStripButton3
+            // searchTB
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::AutoschoolAIS.Properties.Resources.search_16;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.searchTB.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.searchTB.Name = "searchTB";
+            this.searchTB.Size = new System.Drawing.Size(100, 25);
             // 
-            // studentsTV
+            // filterBtn
+            // 
+            this.filterBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.filterBtn.Image = global::AutoschoolAIS.Properties.Resources.filter_16;
+            this.filterBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.filterBtn.Name = "filterBtn";
+            this.filterBtn.Size = new System.Drawing.Size(23, 22);
+            this.filterBtn.Text = "toolStripButton1";
+            this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
+            // 
+            // reloadBtn
+            // 
+            this.reloadBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.reloadBtn.Image = ((System.Drawing.Image)(resources.GetObject("reloadBtn.Image")));
+            this.reloadBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.reloadBtn.Name = "reloadBtn";
+            this.reloadBtn.Size = new System.Drawing.Size(23, 22);
+            this.reloadBtn.Text = "toolStripButton3";
+            this.reloadBtn.Click += new System.EventHandler(this.reloadBtn_Click);
+            // 
+            // tableView
             // 
             this.tableView.AllowUserToAddRows = false;
             this.tableView.AllowUserToDeleteRows = false;
@@ -120,11 +140,11 @@ namespace AutoschoolAIS.Components.Student
             this.UserNameColumn,
             this.GroupNameColumn});
             this.tableView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableView.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("studentsTV.Ids")));
+            this.tableView.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("tableView.Ids")));
             this.tableView.IsMultiselect = false;
             this.tableView.Location = new System.Drawing.Point(0, 25);
             this.tableView.MultiSelect = false;
-            this.tableView.Name = "studentsTV";
+            this.tableView.Name = "tableView";
             this.tableView.ReadOnly = true;
             this.tableView.RowHeadersVisible = false;
             this.tableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -178,11 +198,13 @@ namespace AutoschoolAIS.Components.Student
         private System.Windows.Forms.ToolStripButton deleteBtn;
         private System.Windows.Forms.ToolStripButton editBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripTextBox searchTB;
+        private System.Windows.Forms.ToolStripButton reloadBtn;
         private Controls.TableView tableView;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn GroupNameColumn;
+        private System.Windows.Forms.ToolStripButton filterBtn;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
     }
 }

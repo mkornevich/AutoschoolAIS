@@ -77,7 +77,7 @@ namespace AutoschoolAIS.Controls
 
         public event Action IdsChanged;
 
-        public Func<TableView> BuildTableViewFunction;
+        public Func<TableView> BuildTableViewWithForm;
 
         public string SqlGetTextById { get; set; } = null;
 
@@ -98,7 +98,7 @@ namespace AutoschoolAIS.Controls
         {
             if (_tableView == null)
             {
-                _tableView = BuildTableViewFunction();
+                _tableView = BuildTableViewWithForm();
                 _tableView.SelectBoxClick += OnIdsChanged;
                 _tableView.Ids = _ids;
                 _tableView.IsMultiselect = _isMultiselect;
