@@ -30,10 +30,11 @@ CREATE TABLE [Subject] (
 )
 
 CREATE TABLE GroupSubjectHours (
+	Id INT PRIMARY KEY IDENTITY,
 	GroupId INT,
 	SubjectId INT,
 	[Hours] INT,
-	PRIMARY KEY (GroupId, SubjectId),
+	UNIQUE (GroupId, SubjectId),
 	CONSTRAINT FK_GroupSubjectHours_To_Group FOREIGN KEY (GroupId) REFERENCES [Group] (Id) ON DELETE CASCADE,
 	CONSTRAINT FK_GroupSubjectHours_To_Subject FOREIGN KEY (SubjectId) REFERENCES [Subject] (Id) ON DELETE CASCADE,
 )

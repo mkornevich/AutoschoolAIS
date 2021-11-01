@@ -56,14 +56,16 @@ INSERT INTO [Subject](Id, [Name], Comment, CreatedAt) VALUES
 (3, N'Теория', N'А', '2021-10-14 12:00:00');
 SET IDENTITY_INSERT [Subject] OFF;
 
+SET IDENTITY_INSERT [GroupSubjectHours] ON;
 DELETE FROM [GroupSubjectHours];
-INSERT INTO GroupSubjectHours(GroupId, SubjectId, [Hours]) VALUES
-(1, 1, 20),
-(1, 2, 7),
-(1, 3, 20),
-(2, 1, 20),
-(2, 2, 6),
-(2, 3, 19);
+INSERT INTO GroupSubjectHours(Id, GroupId, SubjectId, [Hours]) VALUES
+(1, 1, 1, 20),
+(2, 1, 2, 7),
+(3, 1, 3, 20),
+(4, 2, 1, 20),
+(5, 2, 2, 6),
+(6, 2, 3, 19);
+SET IDENTITY_INSERT [GroupSubjectHours] OFF;
 
 SET IDENTITY_INSERT [Car] ON;
 DELETE FROM [Car];

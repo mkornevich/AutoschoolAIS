@@ -31,12 +31,12 @@ namespace AutoschoolAIS.Components.Subject
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubjectListForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.searchTB = new System.Windows.Forms.ToolStripTextBox();
             this.createBtn = new System.Windows.Forms.ToolStripButton();
             this.deleteBtn = new System.Windows.Forms.ToolStripButton();
             this.editBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.searchTB = new System.Windows.Forms.ToolStripTextBox();
             this.filterBtn = new System.Windows.Forms.ToolStripButton();
             this.reloadBtn = new System.Windows.Forms.ToolStripButton();
             this.tableView = new AutoschoolAIS.Controls.TableView();
@@ -65,22 +65,6 @@ namespace AutoschoolAIS.Components.Subject
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(42, 22);
-            this.toolStripLabel1.Text = "Поиск";
-            // 
-            // searchTB
-            // 
-            this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(100, 25);
-            // 
             // createBtn
             // 
             this.createBtn.Image = global::AutoschoolAIS.Properties.Resources.add_16;
@@ -106,6 +90,23 @@ namespace AutoschoolAIS.Components.Subject
             this.editBtn.Size = new System.Drawing.Size(23, 22);
             this.editBtn.Text = "toolStripButton4";
             this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(42, 22);
+            this.toolStripLabel1.Text = "Поиск";
+            // 
+            // searchTB
+            // 
+            this.searchTB.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.searchTB.Name = "searchTB";
+            this.searchTB.Size = new System.Drawing.Size(100, 25);
             // 
             // filterBtn
             // 
@@ -214,10 +215,10 @@ namespace AutoschoolAIS.Components.Subject
         private System.Windows.Forms.ToolStripTextBox searchTB;
         private System.Windows.Forms.ToolStripButton filterBtn;
         private System.Windows.Forms.ToolStripButton reloadBtn;
-        private Controls.TableView tableView;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatedAtColumn;
+        public Controls.TableView tableView;
     }
 }
