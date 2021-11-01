@@ -81,6 +81,12 @@
     <Compile Include="Components\Car\CarEditForm.Designer.cs">
       <DependentUpon>CarEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Car\CarFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\Car\CarFilterForm.Designer.cs">
+      <DependentUpon>CarFilterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Car\CarListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,15 @@
     <Compile Include="Services\Messages\MessagesService.cs" />
     <Compile Include="Services\Messages\MessageType.cs" />
     <Compile Include="Utils\DbUtils.cs" />
+    <EmbeddedResource Include="Components\Car\CarEditForm.resx">
+      <DependentUpon>CarEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Car\CarFilterForm.resx">
+      <DependentUpon>CarFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Car\CarListForm.resx">
+      <DependentUpon>CarListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\GroupSubjectHours\GroupSubjectHoursEditForm.resx">
       <DependentUpon>GroupSubjectHoursEditForm.cs</DependentUpon>
     </EmbeddedResource>
