@@ -1,6 +1,7 @@
 ﻿using AutoschoolAIS.Components.Group;
 using AutoschoolAIS.Components.User;
 using AutoschoolAIS.Utils;
+using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,23 +16,25 @@ namespace AutoschoolAIS.Components.Student
 {
     public partial class StudentEditForm : Form
     {
-        private DataRow _row;
+        private IDictionary<string, object> _row;
+
+        private object _identity;
 
         public StudentEditForm()
         {
             InitializeComponent();
 
-            userIC.SqlGetTextById = "SELECT [Name] FROM [User] WHERE Id = @Id";
+            userIC.GetTextById = id => Env.Db.Query("User").Select("Name").Where("Id", id).First().Name;
             userIC.BuildTableViewFunction = () => new UserListForm().tableView;
 
-            groupIC.SqlGetTextById = "SELECT [Name] FROM [Group] WHERE Id = @Id";
+            groupIC.GetTextById = id => Env.Db.Query("Group").Select("Name").Where("Id", id).First().Name;
             groupIC.BuildTableViewFunction = () => new GroupListForm().tableView;
         }
 
         private void DataRowToForm()
         {
-            userIC.Id = (int)_row["UserId"];
-            groupIC.Id = (int)_row["GroupId"];
+            userIC.Id = (int?)_row["UserId"];
+            groupIC.Id = (int?)_row["GroupId"];
         }
 
         private void FormToDataRow()
@@ -45,27 +48,25 @@ namespace AutoschoolAIS.Components.Student
             return true;
         }
 
-        private void LoadDataRow(object identity)
+        private void LoadDataRow()
         {
-            var adapter = Env.Db.CreateDataAdapter(
-                "SELECT * FROM [Student] WHERE Id = @Id");
-            adapter.SelectCommand.Parameters.AddWithValue("Id", identity);
-            var dataSet = new DataSet();
-            adapter.Fill(dataSet);
-            _row = dataSet.Tables[0].Rows[0];
+            _row = Env.Db.Query("Student")
+                .Select("UserId", "GroupId")
+                .Where("Id", _identity)
+                .First();
         }
 
         private void StoreDataRow()
         {
-            var command = Env.Db.CreateCommand("" +
-                "UPDATE [Student] SET UserId = @UserId, GroupId = @GroupId WHERE Id = @Id");
-            DbUtils.DataRowToParams(_row, command.Parameters);
-            command.ExecuteNonQuery();
+            Env.Db.Query("Student")
+                .Where("Id", _identity)
+                .Update(_row);
         }
 
         public void ShowForEdit(object identity)
         {
-            LoadDataRow(identity);
+            _identity = identity;
+            LoadDataRow();
             DataRowToForm();
             MdiParent = Env.MainForm;
             Show();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,36 +22,32 @@ namespace AutoschoolAIS.Components.Group
 
         private void ReloadTable()
         {
-            var adapter = Env.Db.CreateDataAdapter("SELECT * FROM [Group]");
-            var dataSet = new DataSet();
-            adapter.Fill(dataSet);
-            tableView.DataSource = dataSet.Tables[0];
+            tableView.DataSourceDynamic = Env.Db.Query("Group").Get();
         }
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            var command = Env.Db.CreateCommand(
-                @"INSERT INTO [Group]([Name], Comment, StartAt, EndAt) VALUES 
-                (N'Новая группа', '', GETDATE(), GETDATE());
-                SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY];");
-            object id = command.ExecuteScalar();
+            int id = Env.Db.Query("Group").InsertGetId<int>(new
+            {
+                Name = "Новая группа",
+                StartAt = DateTime.Now.ToString(),
+                EndAt = DateTime.Now.ToString(),
+            });
             new GroupEditForm().ShowForEdit(id);
             Env.Change.OnDatabaseChanged();
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            var row = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row;
-            var command = Env.Db.CreateCommand("DELETE FROM [Group] WHERE Id = @Id");
-            command.Parameters.AddWithValue("Id", row["Id"]);
-            command.ExecuteNonQuery();
+            var id = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row["Id"];
+            Env.Db.Query("Group").Where("Id", id).Delete();
             Env.Change.OnDatabaseChanged();
         }
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            var row = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row;
-            new GroupEditForm().ShowForEdit((int)row["Id"]);
+            var id = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row["Id"];
+            new GroupEditForm().ShowForEdit((int)id);
         }
     }
 }

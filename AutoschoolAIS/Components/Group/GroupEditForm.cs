@@ -1,4 +1,5 @@
 ﻿using AutoschoolAIS.Utils;
+using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,9 @@ namespace AutoschoolAIS.Components.Group
 {
     public partial class GroupEditForm : Form
     {
-        private DataRow _row;
+        private dynamic _row;
+
+        private object _identity;
 
         public GroupEditForm()
         {
@@ -22,18 +25,18 @@ namespace AutoschoolAIS.Components.Group
 
         private void DataRowToForm()
         {
-            nameTB.Text = _row["Name"].ToString();
-            commentTB.Text = _row["Comment"].ToString();
-            startAtDTP.Value = DateTime.Parse(_row["StartAt"].ToString());
-            endAtDTP.Value = DateTime.Parse(_row["EndAt"].ToString());
+            nameTB.Text = _row.Name;
+            commentTB.Text = _row.Comment;
+            startAtDTP.Value = DateTime.Parse(_row.StartAt.ToString());
+            endAtDTP.Value = DateTime.Parse(_row.EndAt.ToString());
         }
 
         private void FormToDataRow()
         {
-            _row["Name"] = nameTB.Text;
-            _row["Comment"] = commentTB.Text;
-            _row["StartAt"] = startAtDTP.Value.ToString();
-            _row["EndAt"] = endAtDTP.Value.ToString();
+            _row.Name = nameTB.Text;
+            _row.Comment = commentTB.Text;
+            _row.StartAt = startAtDTP.Value.ToString();
+            _row.EndAt = endAtDTP.Value.ToString();
         }
 
         private bool ValidateForm()
@@ -41,27 +44,25 @@ namespace AutoschoolAIS.Components.Group
             return true;
         }
 
-        private void LoadDataRow(object identity)
+        private void LoadDataRow()
         {
-            var adapter = Env.Db.CreateDataAdapter(
-                "SELECT * FROM [Group] WHERE Id = @Id");
-            adapter.SelectCommand.Parameters.AddWithValue("Id", identity);
-            var dataSet = new DataSet();
-            adapter.Fill(dataSet);
-            _row = dataSet.Tables[0].Rows[0];
+            _row = Env.Db.Query("Group")
+                .Select("Name", "Comment", "StartAt", "EndAt")
+                .Where("Id", _identity)
+                .First();
         }
 
         private void StoreDataRow()
         {
-            var command = Env.Db.CreateCommand("" +
-                "UPDATE [Group] SET Name = @Name, Comment = @Comment, StartAt = @StartAt, EndAt = @EndAt WHERE Id = @Id");
-            DbUtils.DataRowToParams(_row, command.Parameters);
-            command.ExecuteNonQuery();
+            Env.Db.Query("Group")
+                .Where("Id", _identity)
+                .Update((IDictionary<string, object>)_row);
         }
 
         public void ShowForEdit(object identity)
         {
-            LoadDataRow(identity);
+            _identity = identity;
+            LoadDataRow();
             DataRowToForm();
             MdiParent = Env.MainForm;
             Show();

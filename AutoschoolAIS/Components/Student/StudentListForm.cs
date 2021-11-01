@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,21 +22,20 @@ namespace AutoschoolAIS.Components.Student
 
         private void ReloadTable()
         {
-            var adapter = Env.Db.CreateDataAdapter(
-                "SELECT Student.Id AS Id, [User].Name AS UserName, [Group].Name AS GroupName FROM Student " +
-                "LEFT JOIN [User] ON Student.UserId = [User].Id " +
-                "LEFT JOIN [Group] ON Student.GroupId = [Group].Id");
-            var dataSet = new DataSet();
-            adapter.Fill(dataSet);
-            tableView.DataSource = dataSet.Tables[0];
+            tableView.DataSourceDynamic = Env.Db.Query("Student")
+                .Select("Student.Id As Id", "User.Name AS UserName", "Group.Name AS GroupName")
+                .LeftJoin("User", "User.Id", "UserId")
+                .LeftJoin("Group", "Group.Id", "GroupId")
+                .Get();
         }
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            var command = Env.Db.CreateCommand(
-                @"INSERT INTO [Student](UserId, GroupId) VALUES (NULL, NULL);
-                SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY];");
-            object id = command.ExecuteScalar();
+            int id = Env.Db.Query("Student").InsertGetId<int>(new Dictionary<string, object>
+            {
+                {"UserId", null },
+                {"GroupId", null },
+            });
             new StudentEditForm().ShowForEdit(id);
             Env.Change.OnDatabaseChanged();
         }
@@ -48,10 +48,8 @@ namespace AutoschoolAIS.Components.Student
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            var row = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row;
-            var command = Env.Db.CreateCommand("DELETE FROM [Student] WHERE Id = @Id");
-            command.Parameters.AddWithValue("Id", row["Id"]);
-            command.ExecuteNonQuery();
+            var id = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row["Id"];
+            Env.Db.Query("Student").Where("Id", id).Delete();
             Env.Change.OnDatabaseChanged();
         }
     }

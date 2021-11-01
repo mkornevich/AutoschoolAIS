@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlKata;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,8 @@ namespace AutoschoolAIS.Controls
             {
                 if (value == null)
                 {
-                    throw new Exception("Id need to be not null.");
+                    Ids = new List<int>();
+                    return;
                 }
                 Ids = new List<int>() { (int)value };
             }
@@ -78,6 +80,8 @@ namespace AutoschoolAIS.Controls
         public Func<TableView> BuildTableViewFunction;
 
         public string SqlGetTextById { get; set; } = null;
+
+        public Func<int, string> GetTextById { get; set; } = null;
 
         private TableView _tableView = null;
 
@@ -121,11 +125,9 @@ namespace AutoschoolAIS.Controls
         {
             Text = "Пусто";
 
-            if (Ids.Count == 1 && SqlGetTextById != null)
+            if (Ids.Count == 1 && GetTextById != null)
             {
-                var command = Env.Db.CreateCommand(SqlGetTextById);
-                command.Parameters.AddWithValue("Id", Ids[0]);
-                Text = (string)command.ExecuteScalar();
+                Text = GetTextById(Ids[0]);
             }
 
             if (Ids.Count > 1)
