@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,72 @@ namespace AutoschoolAIS.Components.Subject
 {
     public partial class SubjectEditForm : Form
     {
+        private dynamic _row;
+
+        private object _identity;
+
         public SubjectEditForm()
         {
             InitializeComponent();
+        }
+
+        private void DataRowToForm()
+        {
+            nameTB.Text = _row.Name;
+            commentTB.Text = _row.Comment;
+            createdAtDTP.Value = DateTime.Parse(_row.CreatedAt.ToString());
+        }
+
+        private void FormToDataRow()
+        {
+            _row.Name = nameTB.Text;
+            _row.Comment = commentTB.Text;
+            _row.CreatedAt = createdAtDTP.Value.ToString();
+        }
+
+        private bool ValidateForm()
+        {
+            return true;
+        }
+
+        private void LoadDataRow()
+        {
+            _row = Env.Db.Query("Subject")
+                .Select("Name", "Comment", "CreatedAt")
+                .Where("Id", _identity)
+                .First();
+        }
+
+        private void StoreDataRow()
+        {
+            Env.Db.Query("Subject")
+                .Where("Id", _identity)
+                .Update((IDictionary<string, object>)_row);
+        }
+
+        public void ShowForEdit(object identity)
+        {
+            _identity = identity;
+            LoadDataRow();
+            DataRowToForm();
+            MdiParent = Env.MainForm;
+            Show();
+        }
+
+        private void okBtn_Click(object sender, EventArgs e)
+        {
+            if (ValidateForm())
+            {
+                FormToDataRow();
+                StoreDataRow();
+                Close();
+                Env.Change.OnDatabaseChanged();
+            }
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
