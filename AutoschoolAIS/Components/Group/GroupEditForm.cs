@@ -38,8 +38,8 @@ namespace AutoschoolAIS.Components.Group
         {
             _row.Name = nameTB.Text;
             _row.Comment = commentTB.Text;
-            _row.StartAt = startAtDTP.Value.ToString("yyyy-MM-dd HH:mm:ss");
-            _row.EndAt = endAtDTP.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            _row.StartAt = startAtDTP.Value.ToString(Env.SqlDateTimeFormat);
+            _row.EndAt = endAtDTP.Value.ToString(Env.SqlDateTimeFormat);
         }
 
         private bool ValidateForm()

@@ -189,6 +189,12 @@
     <Compile Include="Components\Teacher\TeacherEditForm.Designer.cs">
       <DependentUpon>TeacherEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Teacher\TeacherFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\Teacher\TeacherFilterForm.Designer.cs">
+      <DependentUpon>TeacherFilterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Teacher\TeacherListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +282,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Subject\SubjectListForm.resx">
       <DependentUpon>SubjectListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Teacher\TeacherEditForm.resx">
+      <DependentUpon>TeacherEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Teacher\TeacherFilterForm.resx">
+      <DependentUpon>TeacherFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Teacher\TeacherListForm.resx">
+      <DependentUpon>TeacherListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\User\UserEditForm.resx">
       <DependentUpon>UserEditForm.cs</DependentUpon>

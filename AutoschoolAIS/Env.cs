@@ -12,6 +12,9 @@ namespace AutoschoolAIS
 {
     public static class Env
     {
+        public const string SqlDateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+
+
         public const string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Autoschool.mdf;Integrated Security=True";
 
         public static bool DesignMode => LicenseManager.UsageMode == LicenseUsageMode.Designtime;
