@@ -280,6 +280,9 @@
     <EmbeddedResource Include="Components\Group\GroupListForm.resx">
       <DependentUpon>GroupListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\Lesson\LessonCreateForm.resx">
+      <DependentUpon>LessonCreateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\Lesson\LessonEditForm.resx">
       <DependentUpon>LessonEditForm.cs</DependentUpon>
     </EmbeddedResource>

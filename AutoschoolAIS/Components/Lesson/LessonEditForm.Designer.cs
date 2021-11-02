@@ -31,9 +31,6 @@ namespace AutoschoolAIS.Components.Lesson
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LessonEditForm));
             this.label1 = new System.Windows.Forms.Label();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.okBtn = new System.Windows.Forms.ToolStripButton();
-            this.cancelBtn = new System.Windows.Forms.ToolStripButton();
             this.studentIC = new AutoschoolAIS.Controls.IdsChooser();
             this.label2 = new System.Windows.Forms.Label();
             this.teacherIC = new AutoschoolAIS.Controls.IdsChooser();
@@ -42,8 +39,11 @@ namespace AutoschoolAIS.Components.Lesson
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.startAtDTP = new System.Windows.Forms.DateTimePicker();
-            this.toolStrip1.SuspendLayout();
+            this.okBtn = new System.Windows.Forms.ToolStripButton();
+            this.cancelBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             ((System.ComponentModel.ISupportInitialize)(this.hoursNUD)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -54,37 +54,6 @@ namespace AutoschoolAIS.Components.Lesson
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Студент";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.okBtn,
-            this.cancelBtn});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(216, 25);
-            this.toolStrip1.TabIndex = 5;
-            this.toolStrip1.Text = "Записать";
-            // 
-            // okBtn
-            // 
-            this.okBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.okBtn.Image = global::AutoschoolAIS.Properties.Resources.ok_16;
-            this.okBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(23, 22);
-            this.okBtn.Text = "Записать";
-            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cancelBtn.Image = global::AutoschoolAIS.Properties.Resources.error_16;
-            this.cancelBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(23, 22);
-            this.cancelBtn.Text = "Отмена";
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // studentIC
             // 
@@ -99,6 +68,7 @@ namespace AutoschoolAIS.Components.Lesson
             this.studentIC.Size = new System.Drawing.Size(192, 20);
             this.studentIC.SqlGetTextById = null;
             this.studentIC.TabIndex = 6;
+            this.studentIC.Text = "Пусто";
             // 
             // label2
             // 
@@ -122,6 +92,7 @@ namespace AutoschoolAIS.Components.Lesson
             this.teacherIC.Size = new System.Drawing.Size(192, 20);
             this.teacherIC.SqlGetTextById = null;
             this.teacherIC.TabIndex = 7;
+            this.teacherIC.Text = "Пусто";
             // 
             // isPassedCB
             // 
@@ -165,6 +136,37 @@ namespace AutoschoolAIS.Components.Lesson
             this.startAtDTP.Size = new System.Drawing.Size(192, 20);
             this.startAtDTP.TabIndex = 12;
             // 
+            // okBtn
+            // 
+            this.okBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.okBtn.Image = global::AutoschoolAIS.Properties.Resources.ok_16;
+            this.okBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.okBtn.Name = "okBtn";
+            this.okBtn.Size = new System.Drawing.Size(23, 22);
+            this.okBtn.Text = "Записать";
+            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.cancelBtn.Image = global::AutoschoolAIS.Properties.Resources.error_16;
+            this.cancelBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(23, 22);
+            this.cancelBtn.Text = "Отмена";
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.okBtn,
+            this.cancelBtn});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(216, 25);
+            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Text = "Записать";
+            // 
             // LessonEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,9 +188,9 @@ namespace AutoschoolAIS.Components.Lesson
             this.MinimizeBox = false;
             this.Name = "LessonEditForm";
             this.Text = "Урок";
+            ((System.ComponentModel.ISupportInitialize)(this.hoursNUD)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hoursNUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,9 +199,6 @@ namespace AutoschoolAIS.Components.Lesson
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton okBtn;
-        private System.Windows.Forms.ToolStripButton cancelBtn;
         private Controls.IdsChooser studentIC;
         private System.Windows.Forms.Label label2;
         private Controls.IdsChooser teacherIC;
@@ -208,5 +207,8 @@ namespace AutoschoolAIS.Components.Lesson
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker startAtDTP;
+        private System.Windows.Forms.ToolStripButton okBtn;
+        private System.Windows.Forms.ToolStripButton cancelBtn;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }

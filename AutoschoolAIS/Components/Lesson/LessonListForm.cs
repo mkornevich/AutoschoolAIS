@@ -25,14 +25,7 @@ namespace AutoschoolAIS.Components.Lesson
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            int id = Env.Db.Query("Lesson").InsertGetId<int>(new Dictionary<string, object>
-            {
-                {"IsPassed", false },
-                {"Hours", 0 },
-                {"StartAt", DateTime.Now.ToString(Env.SqlDateTimeFormat) }
-            });
-            new LessonEditForm().ShowForEdit(id);
-            Env.Change.OnDatabaseChanged();
+            new LessonCreateForm().ShowForCreate();
         }
 
         private void editBtn_Click(object sender, EventArgs e)
