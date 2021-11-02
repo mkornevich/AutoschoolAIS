@@ -117,11 +117,23 @@
     <Compile Include="Components\Group\GroupListForm.Designer.cs">
       <DependentUpon>GroupListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Lesson\LessonCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\Lesson\LessonCreateForm.Designer.cs">
+      <DependentUpon>LessonCreateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Lesson\LessonEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Components\Lesson\LessonEditForm.Designer.cs">
       <DependentUpon>LessonEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Lesson\LessonFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\Lesson\LessonFilterForm.Designer.cs">
+      <DependentUpon>LessonFilterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Lesson\LessonListForm.cs">
       <SubType>Form</SubType>
@@ -255,6 +267,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Group\GroupListForm.resx">
       <DependentUpon>GroupListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Lesson\LessonEditForm.resx">
+      <DependentUpon>LessonEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Lesson\LessonFilterForm.resx">
+      <DependentUpon>LessonFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Lesson\LessonListForm.resx">
+      <DependentUpon>LessonListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Main\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>

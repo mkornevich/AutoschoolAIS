@@ -232,7 +232,7 @@ namespace AutoschoolAIS.Components.Teacher
         private System.Windows.Forms.ToolStripTextBox searchTB;
         private System.Windows.Forms.ToolStripButton filterBtn;
         private System.Windows.Forms.ToolStripButton reloadBtn;
-        private Controls.TableView tableView;
+        public Controls.TableView tableView;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubjectNameColumn;
