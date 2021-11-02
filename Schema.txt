@@ -37,9 +37,9 @@ Car
 Teacher
 	Id
 	UserId
-	SubjectId
+	SubjectId +
 	PinnedCarId
-	IsWorked
+	IsWorked +
 	CreatedAt DateTime
 	
 Lesson

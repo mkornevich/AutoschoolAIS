@@ -93,6 +93,12 @@
     <Compile Include="Components\Car\CarListForm.Designer.cs">
       <DependentUpon>CarListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Event\EventFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\Event\EventFilterForm.Designer.cs">
+      <DependentUpon>EventFilterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Event\EventListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Car\CarListForm.resx">
       <DependentUpon>CarListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Event\EventFilterForm.resx">
+      <DependentUpon>EventFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Event\EventListForm.resx">
+      <DependentUpon>EventListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\GroupSubjectHours\GroupSubjectHoursEditForm.resx">
       <DependentUpon>GroupSubjectHoursEditForm.cs</DependentUpon>

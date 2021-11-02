@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,35 @@ namespace AutoschoolAIS.Components.Event
 {
     public partial class EventListForm : Form
     {
+        public EventFilterForm FilterForm { get; private set; }
+
         public EventListForm()
         {
             InitializeComponent();
+            FilterForm = new EventFilterForm(tableView);
+            FilterForm.ReloadTable();
+            Env.Change.DatabaseChanged += FilterForm.ReloadTable;
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            var id = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row["Id"];
+            Env.Db.Query("Event").Where("Id", id).Delete();
+            Env.Change.OnDatabaseChanged();
+        }
+
+        private void filterBtn_Click(object sender, EventArgs e)
+        {
+            FilterForm.Show();
+        }
+
+        private void reloadBtn_Click(object sender, EventArgs e)
+        {
+            if (searchTB.Text != "")
+            {
+                FilterForm.searchTB.Text = searchTB.Text;
+            }
+            FilterForm.ReloadTable();
         }
     }
 }
