@@ -1,5 +1,7 @@
-﻿using AutoschoolAIS.Components.Student;
+﻿using AutoschoolAIS.Components.Group;
+using AutoschoolAIS.Components.Student;
 using AutoschoolAIS.Components.Teacher;
+using SqlKata;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,8 @@ namespace AutoschoolAIS.Components.Lesson
     {
         private IDictionary<string, object> _row;
 
+        private int? _groupId;
+
         public LessonCreateForm()
         {
             InitializeComponent();
@@ -26,24 +30,19 @@ namespace AutoschoolAIS.Components.Lesson
 
             teacherIC.GetTextById = id => Env.Db.Query("Teacher").Select("User.Name AS Name").LeftJoin("User", "User.Id", "UserId").Where("Teacher.Id", id).First().Name;
             teacherIC.BuildTableViewWithForm = () => new TeacherListForm().tableView;
+
+            groupIC.GetTextById = id => Env.Db.Query("Group").Where("Id", id).First().Name;
+            groupIC.BuildTableViewWithForm = () => new GroupListForm().tableView;
         }
 
-        private void DataRowToForm()
+        private void FillFormToDefault()
         {
-            studentIC.Id = (int?)_row["StudentId"];
-            teacherIC.Id = (int?)_row["TeacherId"];
-            isPassedCB.Checked = (bool)_row["IsPassed"];
-            hoursNUD.Value = (int)_row["Hours"];
-            startAtDTP.Value = DateTime.Parse(_row["StartAt"].ToString());
-        }
-
-        private void FormToDataRow()
-        {
-            _row["StudentId"] = studentIC.Id;
-            _row["TeacherId"] = teacherIC.Id;
-            _row["IsPassed"] = isPassedCB.Checked;
-            _row["Hours"] = hoursNUD.Value;
-            _row["StartAt"] = startAtDTP.Value.ToString(Env.SqlDateTimeFormat);
+            studentIC.Id = null;
+            groupIC.Id = null;
+            teacherIC.Id = null;
+            isPassedCB.Checked = false;
+            hoursNUD.Value = 0;
+            startAtDTP.Value = DateTime.Now;
         }
 
         private bool ValidateForm()
@@ -51,26 +50,42 @@ namespace AutoschoolAIS.Components.Lesson
             return true;
         }
 
-        private void LoadDataRow()
+        private void Store()
         {
-            /*_row = Env.Db.Query("Lesson")
-                .Select("StudentId", "TeacherId", "IsPassed", "Hours", "StartAt")
-                .Where("Id", _identity)
-                .First();*/
-        }
-
-        private void StoreDataRow()
-        {
-            /*Env.Db.Query("Lesson")
-                .Where("Id", _identity)
-                .Update(_row);*/
+            if (modeTC.SelectedTab == studentTP)
+            {
+                Env.Db.Query("Lesson")
+                    .Insert(new
+                    {
+                        StudentId = studentIC.Id,
+                        TeacherId = teacherIC.Id,
+                        isPassed = isPassedCB.Checked,
+                        Hours = hoursNUD.Value,
+                        StartAt = startAtDTP.Value.ToString(Env.SqlDateTimeFormat),
+                    });
+            }
+            else
+            {
+                Env.Db.Query("Lesson").Insert(new[] {
+                    "StudentId",
+                    "TeacherId",
+                    "IsPassed",
+                    "Hours",
+                    "StartAt",
+                }, new Query("Student")
+                    .Select("Id AS StudentId")
+                    .SelectRaw("? AS TeacherId", teacherIC.Id)
+                    .SelectRaw("? AS IsPassed", isPassedCB.Checked)
+                    .SelectRaw("? AS Hours", hoursNUD.Value)
+                    .SelectRaw("? AS StartAt", startAtDTP.Value.ToString(Env.SqlDateTimeFormat))
+                    .Where("GroupId", groupIC.Id)
+                );
+            }
         }
 
         public void ShowForCreate()
         {
-            //_identity = identity;
-            //LoadDataRow();
-            //DataRowToForm();
+            FillFormToDefault();
             MdiParent = Env.MainForm;
             Show();
         }
@@ -79,8 +94,7 @@ namespace AutoschoolAIS.Components.Lesson
         {
             if (ValidateForm())
             {
-                FormToDataRow();
-                StoreDataRow();
+                Store();
                 Close();
                 Env.Change.OnDatabaseChanged();
             }

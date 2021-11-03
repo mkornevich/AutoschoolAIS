@@ -42,14 +42,14 @@ namespace AutoschoolAIS.Components.Lesson
             this.label2 = new System.Windows.Forms.Label();
             this.groupIC = new AutoschoolAIS.Controls.IdsChooser();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.modeTC = new System.Windows.Forms.TabControl();
             this.studentTP = new System.Windows.Forms.TabPage();
-            this.groupTP = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.studentIC = new AutoschoolAIS.Controls.IdsChooser();
+            this.groupTP = new System.Windows.Forms.TabPage();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hoursNUD)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.modeTC.SuspendLayout();
             this.studentTP.SuspendLayout();
             this.groupTP.SuspendLayout();
             this.SuspendLayout();
@@ -175,15 +175,15 @@ namespace AutoschoolAIS.Components.Lesson
             this.label1.TabIndex = 13;
             this.label1.Text = "Группа студентов";
             // 
-            // tabControl1
+            // modeTC
             // 
-            this.tabControl1.Controls.Add(this.studentTP);
-            this.tabControl1.Controls.Add(this.groupTP);
-            this.tabControl1.Location = new System.Drawing.Point(12, 28);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(223, 70);
-            this.tabControl1.TabIndex = 22;
+            this.modeTC.Controls.Add(this.studentTP);
+            this.modeTC.Controls.Add(this.groupTP);
+            this.modeTC.Location = new System.Drawing.Point(12, 28);
+            this.modeTC.Name = "modeTC";
+            this.modeTC.SelectedIndex = 0;
+            this.modeTC.Size = new System.Drawing.Size(223, 70);
+            this.modeTC.TabIndex = 22;
             // 
             // studentTP
             // 
@@ -196,18 +196,6 @@ namespace AutoschoolAIS.Components.Lesson
             this.studentTP.TabIndex = 0;
             this.studentTP.Text = "Для студента";
             this.studentTP.UseVisualStyleBackColor = true;
-            // 
-            // groupTP
-            // 
-            this.groupTP.Controls.Add(this.label1);
-            this.groupTP.Controls.Add(this.groupIC);
-            this.groupTP.Location = new System.Drawing.Point(4, 22);
-            this.groupTP.Name = "groupTP";
-            this.groupTP.Padding = new System.Windows.Forms.Padding(3);
-            this.groupTP.Size = new System.Drawing.Size(215, 44);
-            this.groupTP.TabIndex = 1;
-            this.groupTP.Text = "Для группы студентов";
-            this.groupTP.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -233,12 +221,24 @@ namespace AutoschoolAIS.Components.Lesson
             this.studentIC.TabIndex = 16;
             this.studentIC.Text = "Пусто";
             // 
+            // groupTP
+            // 
+            this.groupTP.Controls.Add(this.label1);
+            this.groupTP.Controls.Add(this.groupIC);
+            this.groupTP.Location = new System.Drawing.Point(4, 22);
+            this.groupTP.Name = "groupTP";
+            this.groupTP.Padding = new System.Windows.Forms.Padding(3);
+            this.groupTP.Size = new System.Drawing.Size(215, 44);
+            this.groupTP.TabIndex = 1;
+            this.groupTP.Text = "Для группы студентов";
+            this.groupTP.UseVisualStyleBackColor = true;
+            // 
             // LessonCreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(246, 253);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.modeTC);
             this.Controls.Add(this.startAtDTP);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -256,7 +256,7 @@ namespace AutoschoolAIS.Components.Lesson
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hoursNUD)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.modeTC.ResumeLayout(false);
             this.studentTP.ResumeLayout(false);
             this.studentTP.PerformLayout();
             this.groupTP.ResumeLayout(false);
@@ -280,7 +280,7 @@ namespace AutoschoolAIS.Components.Lesson
         private System.Windows.Forms.Label label2;
         private Controls.IdsChooser groupIC;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl modeTC;
         private System.Windows.Forms.TabPage studentTP;
         private System.Windows.Forms.Label label5;
         private Controls.IdsChooser studentIC;
