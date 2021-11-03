@@ -78,3 +78,42 @@ CREATE TABLE [Event] (
 	[CreatedAt] DATETIME,
 	CONSTRAINT FK_Event_To_User FOREIGN KEY (UserId) REFERENCES [User] (Id) ON DELETE CASCADE,
 )
+
+GO
+
+
+CREATE VIEW HoursStatistic AS
+
+SELECT 
+	T1.GroupId AS GroupId,
+	[Group].[Name] AS GroupName,
+
+	T1.StudentId AS StudentId,
+	[StudentUser].[Name] AS StudentName,
+
+	T1.SubjectId AS SubjectId, 
+	[Subject].[Name] AS SubjectName,
+
+	GroupSubjectHours.[Hours] AS PlanHours,
+	T1.PassedHours AS PassedHours, 
+	GroupSubjectHours.[Hours] - T1.PassedHours AS LeftHours
+FROM (
+	SELECT
+		Student.GroupId AS GroupId,
+		Lesson.StudentId AS StudentId,
+		Teacher.SubjectId AS SubjectId,
+		SUM(Lesson.[Hours]) AS PassedHours
+	FROM Lesson
+	LEFT JOIN Student ON Student.Id = Lesson.StudentId
+	LEFT JOIN Teacher ON Teacher.Id = Lesson.TeacherId
+	GROUP BY Student.GroupId, Lesson.StudentId, Teacher.SubjectId) AS T1
+
+LEFT JOIN GroupSubjectHours ON GroupSubjectHours.GroupId = T1.GroupId AND GroupSubjectHours.SubjectId = T1.SubjectId
+
+LEFT JOIN [Group] ON [Group].Id = T1.GroupId
+LEFT JOIN [Subject] ON [Subject].Id = T1.SubjectId
+
+LEFT JOIN Student ON Student.Id = T1.StudentId
+LEFT JOIN [User] AS StudentUser ON StudentUser.Id = Student.UserId
+
+--ORDER BY GroupId, StudentName, SubjectName
