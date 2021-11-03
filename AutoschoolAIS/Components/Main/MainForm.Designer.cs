@@ -43,6 +43,9 @@ namespace AutoschoolAIS.Components.Main
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.authMI = new System.Windows.Forms.ToolStripMenuItem();
             this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.студентToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.учительToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поУрокамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +81,7 @@ namespace AutoschoolAIS.Components.Main
             // 
             this.пользователиToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.user_16;
             this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
-            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.пользователиToolStripMenuItem.Tag = "UserListForm";
             this.пользователиToolStripMenuItem.Text = "Пользователи";
             this.пользователиToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
@@ -87,7 +90,7 @@ namespace AutoschoolAIS.Components.Main
             // 
             this.группыToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.group_16;
             this.группыToolStripMenuItem.Name = "группыToolStripMenuItem";
-            this.группыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.группыToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.группыToolStripMenuItem.Tag = "GroupListForm";
             this.группыToolStripMenuItem.Text = "Группы";
             this.группыToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
@@ -96,7 +99,7 @@ namespace AutoschoolAIS.Components.Main
             // 
             this.студентыToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.student_16;
             this.студентыToolStripMenuItem.Name = "студентыToolStripMenuItem";
-            this.студентыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.студентыToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.студентыToolStripMenuItem.Tag = "StudentListForm";
             this.студентыToolStripMenuItem.Text = "Студенты";
             this.студентыToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
@@ -105,7 +108,7 @@ namespace AutoschoolAIS.Components.Main
             // 
             this.предметыToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.subject_16;
             this.предметыToolStripMenuItem.Name = "предметыToolStripMenuItem";
-            this.предметыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.предметыToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.предметыToolStripMenuItem.Tag = "SubjectListForm";
             this.предметыToolStripMenuItem.Text = "Предметы";
             this.предметыToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
@@ -114,7 +117,7 @@ namespace AutoschoolAIS.Components.Main
             // 
             this.автомобилиToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.car_16;
             this.автомобилиToolStripMenuItem.Name = "автомобилиToolStripMenuItem";
-            this.автомобилиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.автомобилиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.автомобилиToolStripMenuItem.Tag = "CarListForm";
             this.автомобилиToolStripMenuItem.Text = "Автомобили";
             this.автомобилиToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
@@ -123,7 +126,7 @@ namespace AutoschoolAIS.Components.Main
             // 
             this.учителяToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.teacher_16;
             this.учителяToolStripMenuItem.Name = "учителяToolStripMenuItem";
-            this.учителяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.учителяToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.учителяToolStripMenuItem.Tag = "TeacherListForm";
             this.учителяToolStripMenuItem.Text = "Учителя";
             this.учителяToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
@@ -132,7 +135,7 @@ namespace AutoschoolAIS.Components.Main
             // 
             this.урокиToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.lesson_16;
             this.урокиToolStripMenuItem.Name = "урокиToolStripMenuItem";
-            this.урокиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.урокиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.урокиToolStripMenuItem.Tag = "LessonListForm";
             this.урокиToolStripMenuItem.Text = "Уроки";
             this.урокиToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
@@ -141,13 +144,17 @@ namespace AutoschoolAIS.Components.Main
             // 
             this.событияToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.event_16;
             this.событияToolStripMenuItem.Name = "событияToolStripMenuItem";
-            this.событияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.событияToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.событияToolStripMenuItem.Tag = "EventListForm";
             this.событияToolStripMenuItem.Text = "События";
             this.событияToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
             // 
             // отчетыToolStripMenuItem
             // 
+            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.студентToolStripMenuItem,
+            this.учительToolStripMenuItem,
+            this.поУрокамToolStripMenuItem});
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
@@ -176,6 +183,33 @@ namespace AutoschoolAIS.Components.Main
             this.сменитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.сменитьПользователяToolStripMenuItem.Text = "Выход";
             this.сменитьПользователяToolStripMenuItem.Click += new System.EventHandler(this.LogoutAct);
+            // 
+            // студентToolStripMenuItem
+            // 
+            this.студентToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.student_16;
+            this.студентToolStripMenuItem.Name = "студентToolStripMenuItem";
+            this.студентToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.студентToolStripMenuItem.Tag = "StudentReportForm";
+            this.студентToolStripMenuItem.Text = "По студентам";
+            this.студентToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
+            // 
+            // учительToolStripMenuItem
+            // 
+            this.учительToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.teacher_16;
+            this.учительToolStripMenuItem.Name = "учительToolStripMenuItem";
+            this.учительToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.учительToolStripMenuItem.Tag = "TeacherReportForm";
+            this.учительToolStripMenuItem.Text = "По учителям";
+            this.учительToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
+            // 
+            // поУрокамToolStripMenuItem
+            // 
+            this.поУрокамToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.lesson_16;
+            this.поУрокамToolStripMenuItem.Name = "поУрокамToolStripMenuItem";
+            this.поУрокамToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.поУрокамToolStripMenuItem.Tag = "LessonReportForm";
+            this.поУрокамToolStripMenuItem.Text = "По урокам";
+            this.поУрокамToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
             // 
             // MainForm
             // 
@@ -211,6 +245,9 @@ namespace AutoschoolAIS.Components.Main
         private System.Windows.Forms.ToolStripMenuItem учителяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem урокиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem событияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem студентToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem учительToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem поУрокамToolStripMenuItem;
     }
 }
 

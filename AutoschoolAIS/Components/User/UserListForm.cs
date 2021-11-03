@@ -23,7 +23,8 @@ namespace AutoschoolAIS.Components.User
 
         private void ReloadTable()
         {
-            tableView.DataSourceDynamic = Env.Db.Query("User").Get();
+            tableView.DataSourceDynamic = Env.Db.Query("User")
+                .Select("Id", "Name", "Email", "Role").Get();
         }
 
         private void createBtn_Click(object sender, EventArgs e)

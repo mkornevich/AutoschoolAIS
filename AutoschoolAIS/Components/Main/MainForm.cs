@@ -58,6 +58,10 @@ namespace AutoschoolAIS.Components.Main
                 { "SubjectListForm", () => new SubjectListForm() },
                 { "TeacherListForm", () => new TeacherListForm() },
                 { "UserListForm", () => new UserListForm() },
+
+                { "StudentReportForm", () => new StudentReportForm() },
+                { "TeacherReportForm", () => new TeacherReportForm() },
+                { "LessonReportForm", () => new LessonReportForm() },
             };
 
             var item = (ToolStripMenuItem)sender;
