@@ -24,6 +24,7 @@ Subject
 	CreatedAt
 	
 GroupSubjectHours
+	Id
 	GroupId
 	SubjectId
 	Hours

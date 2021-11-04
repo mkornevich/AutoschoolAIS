@@ -29,6 +29,7 @@ namespace AutoschoolAIS.Components.Main
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,12 +41,12 @@ namespace AutoschoolAIS.Components.Main
             this.урокиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.событияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.authMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.студентToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.учительToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поУрокамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.authMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -159,6 +160,33 @@ namespace AutoschoolAIS.Components.Main
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
             // 
+            // студентToolStripMenuItem
+            // 
+            this.студентToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.student_16;
+            this.студентToolStripMenuItem.Name = "студентToolStripMenuItem";
+            this.студентToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.студентToolStripMenuItem.Tag = "StudentReportForm";
+            this.студентToolStripMenuItem.Text = "По студентам";
+            this.студентToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
+            // 
+            // учительToolStripMenuItem
+            // 
+            this.учительToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.teacher_16;
+            this.учительToolStripMenuItem.Name = "учительToolStripMenuItem";
+            this.учительToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.учительToolStripMenuItem.Tag = "TeacherReportForm";
+            this.учительToolStripMenuItem.Text = "По учителям";
+            this.учительToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
+            // 
+            // поУрокамToolStripMenuItem
+            // 
+            this.поУрокамToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.lesson_16;
+            this.поУрокамToolStripMenuItem.Name = "поУрокамToolStripMenuItem";
+            this.поУрокамToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.поУрокамToolStripMenuItem.Tag = "LessonReportForm";
+            this.поУрокамToolStripMenuItem.Text = "По урокам";
+            this.поУрокамToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
+            // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
@@ -184,39 +212,13 @@ namespace AutoschoolAIS.Components.Main
             this.сменитьПользователяToolStripMenuItem.Text = "Выход";
             this.сменитьПользователяToolStripMenuItem.Click += new System.EventHandler(this.LogoutAct);
             // 
-            // студентToolStripMenuItem
-            // 
-            this.студентToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.student_16;
-            this.студентToolStripMenuItem.Name = "студентToolStripMenuItem";
-            this.студентToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.студентToolStripMenuItem.Tag = "StudentReportForm";
-            this.студентToolStripMenuItem.Text = "По студентам";
-            this.студентToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
-            // 
-            // учительToolStripMenuItem
-            // 
-            this.учительToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.teacher_16;
-            this.учительToolStripMenuItem.Name = "учительToolStripMenuItem";
-            this.учительToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.учительToolStripMenuItem.Tag = "TeacherReportForm";
-            this.учительToolStripMenuItem.Text = "По учителям";
-            this.учительToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
-            // 
-            // поУрокамToolStripMenuItem
-            // 
-            this.поУрокамToolStripMenuItem.Image = global::AutoschoolAIS.Properties.Resources.lesson_16;
-            this.поУрокамToolStripMenuItem.Name = "поУрокамToolStripMenuItem";
-            this.поУрокамToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.поУрокамToolStripMenuItem.Tag = "LessonReportForm";
-            this.поУрокамToolStripMenuItem.Text = "По урокам";
-            this.поУрокамToolStripMenuItem.Click += new System.EventHandler(this.ShowFormAct);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 515);
             this.Controls.Add(this.mainMenuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "MainForm";
