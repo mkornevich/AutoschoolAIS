@@ -292,6 +292,7 @@
     </Compile>
     <Compile Include="Services\Messages\MessagesService.cs" />
     <Compile Include="Services\Messages\MessageType.cs" />
+    <Compile Include="Services\Report\ReportService.cs" />
     <Compile Include="Utils\DbUtils.cs" />
     <EmbeddedResource Include="Components\Car\CarEditForm.resx">
       <DependentUpon>CarEditForm.cs</DependentUpon>

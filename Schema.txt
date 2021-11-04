@@ -61,6 +61,9 @@ Event
 
 ---
 
+Statistic
+ORDER BY GroupId, StudentName, SubjectName
+
 MainForm
 	Справочники
 	Отчеты
