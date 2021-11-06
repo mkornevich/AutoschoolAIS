@@ -33,6 +33,7 @@ namespace AutoschoolAIS.Services.Auth
 
         public void Logout()
         {
+            Env.MainForm.MdiChildren.ToList().ForEach(f => f.Close());
             User = null;
         }
 
