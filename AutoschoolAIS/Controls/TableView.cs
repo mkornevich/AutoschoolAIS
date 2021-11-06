@@ -37,14 +37,44 @@ namespace AutoschoolAIS.Controls
             }
         }
 
+        public int? SelectedId
+        {
+            get
+            {
+                if (SelectedRows.Count > 0)
+                {
+                    return Convert.ToInt32(((DataRowView)SelectedRows[0].DataBoundItem).Row["Id"]);
+                }
+                return null;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    return;
+                }
+
+                var row = Rows.Cast<DataGridViewRow>().ToList()
+                    .Find(r => Convert.ToInt32(((DataRowView)r.DataBoundItem).Row["Id"]) == value);
+
+                if (row != null)
+                {
+                    row.Selected = true;
+                }
+            }
+        }
+
         public IEnumerable<dynamic> DataSourceDynamic
         {
             set
             {
+                var selectedId = SelectedId;
+
                 var rows = value.ToArray();
 
                 if (rows.Count() == 0)
                 {
+                    Rows.Cast<DataGridViewRow>().ToList().ForEach(row => Rows.Remove(row));
                     return;
                 }
 
@@ -52,7 +82,7 @@ namespace AutoschoolAIS.Controls
 
                 foreach (var pair in (IDictionary<string, object>)rows[0])
                 {
-                    dataTable.Columns.Add(pair.Key, pair.Value.GetType());
+                    dataTable.Columns.Add(pair.Key);
                 }
 
                 foreach (var row in rows)
@@ -61,6 +91,8 @@ namespace AutoschoolAIS.Controls
                 }
 
                 DataSource = dataTable;
+
+                SelectedId = selectedId;
             }
         }
 
@@ -91,7 +123,7 @@ namespace AutoschoolAIS.Controls
             {
                 if (row.Cells["IdColumn"].Value != null)
                 {
-                    row.Cells["SelectColumn"].Value = Ids.Contains((int)row.Cells["IdColumn"].Value);
+                    row.Cells["SelectColumn"].Value = Ids.Contains(Convert.ToInt32(row.Cells["IdColumn"].Value));
                 }
             }
         }
@@ -117,7 +149,7 @@ namespace AutoschoolAIS.Controls
 
             var selectCell = Rows[e.RowIndex].Cells[e.ColumnIndex];
             selectCell.Value = !Convert.ToBoolean(selectCell.Value);
-            int id = (int)Rows[selectCell.RowIndex].Cells["IdColumn"].Value;
+            int id = Convert.ToInt32(Rows[selectCell.RowIndex].Cells["IdColumn"].Value);
 
             if (Convert.ToBoolean(selectCell.Value))
             {
