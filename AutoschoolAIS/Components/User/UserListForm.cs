@@ -36,15 +36,19 @@ namespace AutoschoolAIS.Components.User
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            var row = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row;
-            new UserEditForm().ShowForEdit((int)row["Id"]);
+            if (tableView.SelectedId != null)
+            {
+                new UserEditForm().ShowForEdit(tableView.SelectedId);
+            }
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            object id = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row["Id"];
-            Env.Db.Query("User").Where("Id", id).Delete();
-            Env.Change.OnDatabaseChanged();
+            if (tableView.SelectedId != null)
+            {
+                Env.Db.Query("User").Where("Id", tableView.SelectedId).Delete();
+                Env.Change.OnDatabaseChanged();
+            }
         }
     }
 }

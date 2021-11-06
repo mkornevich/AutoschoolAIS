@@ -35,15 +35,19 @@ namespace AutoschoolAIS.Components.Car
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            var row = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row;
-            new CarEditForm().ShowForEdit((int)row["Id"]);
+            if (tableView.SelectedId != null)
+            {
+                new CarEditForm().ShowForEdit(tableView.SelectedId);
+            }
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            var id = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row["Id"];
-            Env.Db.Query("Car").Where("Id", id).Delete();
-            Env.Change.OnDatabaseChanged();
+            if (tableView.SelectedId != null)
+            {
+                Env.Db.Query("Car").Where("Id", tableView.SelectedId).Delete();
+                Env.Change.OnDatabaseChanged();
+            }
         }
 
         private void filterBtn_Click(object sender, EventArgs e)

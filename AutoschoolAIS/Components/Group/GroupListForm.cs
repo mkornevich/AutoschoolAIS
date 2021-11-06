@@ -39,15 +39,19 @@ namespace AutoschoolAIS.Components.Group
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            var id = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row["Id"];
-            Env.Db.Query("Group").Where("Id", id).Delete();
-            Env.Change.OnDatabaseChanged();
+            if (tableView.SelectedId != null)
+            {
+                Env.Db.Query("Group").Where("Id", tableView.SelectedId).Delete();
+                Env.Change.OnDatabaseChanged();
+            }
         }
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            var id = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row["Id"];
-            new GroupEditForm().ShowForEdit((int)id);
+            if (tableView.SelectedId != null)
+            {
+                new GroupEditForm().ShowForEdit(tableView.SelectedId);
+            }
         }
     }
 }

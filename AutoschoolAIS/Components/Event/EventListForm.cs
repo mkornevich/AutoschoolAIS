@@ -25,9 +25,11 @@ namespace AutoschoolAIS.Components.Event
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            var id = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row["Id"];
-            Env.Db.Query("Event").Where("Id", id).Delete();
-            Env.Change.OnDatabaseChanged();
+            if (tableView.SelectedId != null)
+            {
+                Env.Db.Query("Event").Where("Id", tableView.SelectedId).Delete();
+                Env.Change.OnDatabaseChanged();
+            }
         }
 
         private void filterBtn_Click(object sender, EventArgs e)

@@ -110,15 +110,19 @@ namespace AutoschoolAIS.Components.Group
 
         private void editGroupSubjectHoursBtn_Click(object sender, EventArgs e)
         {
-            var row = ((DataRowView)groupSubjectHoursTV.SelectedRows[0].DataBoundItem).Row;
-            new GroupSubjectHoursEditForm().ShowForEdit((int)row["Id"]);
+            if (groupSubjectHoursTV.SelectedId != null)
+            {
+                new GroupSubjectHoursEditForm().ShowForEdit(groupSubjectHoursTV.SelectedId);
+            }
         }
 
         private void deleteGroupSubjectHoursBtn_Click(object sender, EventArgs e)
         {
-            var id = ((DataRowView)groupSubjectHoursTV.SelectedRows[0].DataBoundItem).Row["Id"];
-            Env.Db.Query("GroupSubjectHours").Where("Id", id).Delete();
-            Env.Change.OnDatabaseChanged();
+            if (groupSubjectHoursTV.SelectedId != null)
+            {
+                Env.Db.Query("GroupSubjectHours").Where("Id", groupSubjectHoursTV.SelectedId).Delete();
+                Env.Change.OnDatabaseChanged();
+            }
         }
     }
 }

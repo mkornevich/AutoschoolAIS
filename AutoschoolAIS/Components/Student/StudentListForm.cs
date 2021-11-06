@@ -36,8 +36,10 @@ namespace AutoschoolAIS.Components.Student
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            var row = ((DataRowView)tableView.SelectedRows[0].DataBoundItem).Row;
-            new StudentEditForm().ShowForEdit((int)row["Id"]);
+            if (tableView.SelectedId != null)
+            {
+                new StudentEditForm().ShowForEdit(tableView.SelectedId);
+            }
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
