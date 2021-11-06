@@ -14,11 +14,14 @@ namespace AutoschoolAIS.Components.User
 {
     public partial class UserListForm : Form
     {
+        public UserFilterForm FilterForm { get; private set; }
+
         public UserListForm()
         {
             InitializeComponent();
-            ReloadTable();
-            Env.Change.DatabaseChanged += ReloadTable;
+            FilterForm = new UserFilterForm(tableView);
+            FilterForm.ReloadTable();
+            Env.Change.DatabaseChanged += FilterForm.ReloadTable;
         }
 
         private void ReloadTable()
@@ -49,6 +52,20 @@ namespace AutoschoolAIS.Components.User
                 Env.Db.Query("User").Where("Id", tableView.SelectedId).Delete();
                 Env.Change.OnDatabaseChanged();
             }
+        }
+
+        private void filterBtn_Click(object sender, EventArgs e)
+        {
+            FilterForm.Show();
+        }
+
+        private void reloadBtn_Click(object sender, EventArgs e)
+        {
+            if (searchTB.Text != "")
+            {
+                FilterForm.searchTB.Text = searchTB.Text;
+            }
+            FilterForm.ReloadTable();
         }
     }
 }

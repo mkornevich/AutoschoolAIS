@@ -13,11 +13,14 @@ namespace AutoschoolAIS.Components.Group
 {
     public partial class GroupListForm : Form
     {
+        public GroupFilterForm FilterForm { get; private set; }
+
         public GroupListForm()
         {
             InitializeComponent();
-            ReloadTable();
-            Env.Change.DatabaseChanged += ReloadTable;
+            FilterForm = new GroupFilterForm(tableView);
+            FilterForm.ReloadTable();
+            Env.Change.DatabaseChanged += FilterForm.ReloadTable;
         }
 
         private void ReloadTable()
@@ -52,6 +55,20 @@ namespace AutoschoolAIS.Components.Group
             {
                 new GroupEditForm().ShowForEdit(tableView.SelectedId);
             }
+        }
+
+        private void filterBtn_Click(object sender, EventArgs e)
+        {
+            FilterForm.Show();
+        }
+
+        private void reloadBtn_Click(object sender, EventArgs e)
+        {
+            if (searchTB.Text != "")
+            {
+                FilterForm.searchTB.Text = searchTB.Text;
+            }
+            FilterForm.ReloadTable();
         }
     }
 }
