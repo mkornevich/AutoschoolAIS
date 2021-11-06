@@ -106,6 +106,7 @@ namespace AutoschoolAIS.Components.Student
             this.searchTB.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.searchTB.Name = "searchTB";
             this.searchTB.Size = new System.Drawing.Size(100, 25);
+            this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             // 
             // filterBtn
             // 
@@ -147,6 +148,7 @@ namespace AutoschoolAIS.Components.Student
             this.tableView.Name = "tableView";
             this.tableView.ReadOnly = true;
             this.tableView.RowHeadersVisible = false;
+            this.tableView.SelectedId = null;
             this.tableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tableView.Size = new System.Drawing.Size(800, 425);
             this.tableView.TabIndex = 3;

@@ -70,5 +70,13 @@ namespace AutoschoolAIS.Components.Group
             }
             FilterForm.ReloadTable();
         }
+
+        private void searchTB_TextChanged(object sender, EventArgs e)
+        {
+            if (searchTB.Text == "")
+            {
+                FilterForm.searchTB.Text = "";
+            }
+        }
     }
 }

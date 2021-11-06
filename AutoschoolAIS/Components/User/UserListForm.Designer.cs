@@ -35,15 +35,15 @@ namespace AutoschoolAIS.Components.User
             this.deleteBtn = new System.Windows.Forms.ToolStripButton();
             this.editBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.searchTB = new System.Windows.Forms.ToolStripTextBox();
+            this.filterBtn = new System.Windows.Forms.ToolStripButton();
+            this.reloadBtn = new System.Windows.Forms.ToolStripButton();
             this.tableView = new AutoschoolAIS.Controls.TableView();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RoleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.filterBtn = new System.Windows.Forms.ToolStripButton();
-            this.reloadBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableView)).BeginInit();
             this.SuspendLayout();
@@ -96,11 +96,38 @@ namespace AutoschoolAIS.Components.User
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(42, 22);
+            this.toolStripLabel1.Text = "Поиск";
+            // 
             // searchTB
             // 
             this.searchTB.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.searchTB.Name = "searchTB";
             this.searchTB.Size = new System.Drawing.Size(100, 25);
+            this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
+            // 
+            // filterBtn
+            // 
+            this.filterBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.filterBtn.Image = global::AutoschoolAIS.Properties.Resources.filter_16;
+            this.filterBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.filterBtn.Name = "filterBtn";
+            this.filterBtn.Size = new System.Drawing.Size(23, 22);
+            this.filterBtn.Text = "toolStripButton1";
+            this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
+            // 
+            // reloadBtn
+            // 
+            this.reloadBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.reloadBtn.Image = ((System.Drawing.Image)(resources.GetObject("reloadBtn.Image")));
+            this.reloadBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.reloadBtn.Name = "reloadBtn";
+            this.reloadBtn.Size = new System.Drawing.Size(23, 22);
+            this.reloadBtn.Text = "toolStripButton3";
+            this.reloadBtn.Click += new System.EventHandler(this.reloadBtn_Click);
             // 
             // tableView
             // 
@@ -156,32 +183,6 @@ namespace AutoschoolAIS.Components.User
             this.RoleColumn.HeaderText = "Роль";
             this.RoleColumn.Name = "RoleColumn";
             this.RoleColumn.ReadOnly = true;
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(42, 22);
-            this.toolStripLabel1.Text = "Поиск";
-            // 
-            // filterBtn
-            // 
-            this.filterBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.filterBtn.Image = global::AutoschoolAIS.Properties.Resources.filter_16;
-            this.filterBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.filterBtn.Name = "filterBtn";
-            this.filterBtn.Size = new System.Drawing.Size(23, 22);
-            this.filterBtn.Text = "toolStripButton1";
-            this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
-            // 
-            // reloadBtn
-            // 
-            this.reloadBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.reloadBtn.Image = ((System.Drawing.Image)(resources.GetObject("reloadBtn.Image")));
-            this.reloadBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.reloadBtn.Name = "reloadBtn";
-            this.reloadBtn.Size = new System.Drawing.Size(23, 22);
-            this.reloadBtn.Text = "toolStripButton3";
-            this.reloadBtn.Click += new System.EventHandler(this.reloadBtn_Click);
             // 
             // UserListForm
             // 

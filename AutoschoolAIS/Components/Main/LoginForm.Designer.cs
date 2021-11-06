@@ -79,6 +79,7 @@ namespace AutoschoolAIS.Components.Main
             // 
             this.passwordTB.Location = new System.Drawing.Point(12, 144);
             this.passwordTB.Name = "passwordTB";
+            this.passwordTB.PasswordChar = '*';
             this.passwordTB.Size = new System.Drawing.Size(247, 20);
             this.passwordTB.TabIndex = 5;
             // 
