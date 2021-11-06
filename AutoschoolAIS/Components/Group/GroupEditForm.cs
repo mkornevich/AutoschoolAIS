@@ -74,6 +74,11 @@ namespace AutoschoolAIS.Components.Group
 
         private void okBtn_Click(object sender, EventArgs e)
         {
+            if (!Env.Auth.HasRole("admin"))
+            {
+                MessageBox.Show("Данная функция доступна для пользователя с ролью admin.");
+                return;
+            }
             if (ValidateForm())
             {
                 FormToDataRow();
@@ -99,6 +104,11 @@ namespace AutoschoolAIS.Components.Group
 
         private void createGroupSubjectHoursBtn_Click(object sender, EventArgs e)
         {
+            if (!Env.Auth.HasRole("admin"))
+            {
+                MessageBox.Show("Данная функция доступна для пользователя с ролью admin.");
+                return;
+            }
             int id = Env.Db.Query("GroupSubjectHours").InsertGetId<int>(new
             {
                 GroupId = _identity,

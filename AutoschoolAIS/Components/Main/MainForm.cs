@@ -48,6 +48,11 @@ namespace AutoschoolAIS.Components.Main
 
         private void ShowFormAct(object sender, EventArgs e)
         {
+            if (Env.Auth.HasRole("guest"))
+            {
+                MessageBox.Show("Данная функция недоступна для пользователя с ролью guest.");
+                return;
+            }
             var forms = new Dictionary<string, Func<Form>>()
             {
                 { "CarListForm", () => new CarListForm() },

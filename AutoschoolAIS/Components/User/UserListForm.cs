@@ -24,14 +24,13 @@ namespace AutoschoolAIS.Components.User
             Env.Change.DatabaseChanged += FilterForm.ReloadTable;
         }
 
-        private void ReloadTable()
-        {
-            tableView.DataSourceDynamic = Env.Db.Query("User")
-                .Select("Id", "Name", "Email", "Role").Get();
-        }
-
         private void createBtn_Click(object sender, EventArgs e)
         {
+            if (!Env.Auth.HasRole("admin"))
+            {
+                MessageBox.Show("Данная функция доступна для пользователя с ролью admin.");
+                return;
+            }
             var id = Env.Db.Query("User").InsertGetId<int>(new { Name = "Новый пользователь", Role = "viewer" });
             new UserEditForm().ShowForEdit(id);
             Env.Change.OnDatabaseChanged();
@@ -47,6 +46,11 @@ namespace AutoschoolAIS.Components.User
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
+            if (!Env.Auth.HasRole("admin"))
+            {
+                MessageBox.Show("Данная функция доступна для пользователя с ролью admin.");
+                return;
+            }
             if (tableView.SelectedId != null)
             {
                 Env.Db.Query("User").Where("Id", tableView.SelectedId).Delete();

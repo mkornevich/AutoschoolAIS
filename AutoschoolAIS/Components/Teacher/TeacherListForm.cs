@@ -25,6 +25,11 @@ namespace AutoschoolAIS.Components.Teacher
 
         private void createBtn_Click(object sender, EventArgs e)
         {
+            if (!Env.Auth.HasRole("admin"))
+            {
+                MessageBox.Show("Данная функция доступна для пользователя с ролью admin.");
+                return;
+            }
             int id = Env.Db.Query("Teacher").InsertGetId<int>(new Dictionary<string, object>
             {
                 {"IsWorked", true },
@@ -44,6 +49,11 @@ namespace AutoschoolAIS.Components.Teacher
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
+            if (!Env.Auth.HasRole("admin"))
+            {
+                MessageBox.Show("Данная функция доступна для пользователя с ролью admin.");
+                return;
+            }
             if (tableView.SelectedId != null)
             {
                 Env.Db.Query("Teacher").Where("Id", tableView.SelectedId).Delete();

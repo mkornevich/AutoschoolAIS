@@ -67,6 +67,11 @@ namespace AutoschoolAIS.Components.Car
 
         private void okBtn_Click(object sender, EventArgs e)
         {
+            if (!Env.Auth.HasRole("admin"))
+            {
+                MessageBox.Show("Данная функция доступна для пользователя с ролью admin.");
+                return;
+            }
             if (ValidateForm())
             {
                 FormToDataRow();

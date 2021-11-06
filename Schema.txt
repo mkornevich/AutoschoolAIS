@@ -3,7 +3,7 @@ User
 	Name
 	Email
 	Password
-	Role (Admin, View, Guest)
+	Role (admin, viewer, guest)
 
 Group
 	Id

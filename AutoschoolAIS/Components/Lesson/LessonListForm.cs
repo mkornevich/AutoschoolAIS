@@ -25,6 +25,11 @@ namespace AutoschoolAIS.Components.Lesson
 
         private void createBtn_Click(object sender, EventArgs e)
         {
+            if (!Env.Auth.HasRole("admin"))
+            {
+                MessageBox.Show("Данная функция доступна для пользователя с ролью admin.");
+                return;
+            }
             new LessonCreateForm().ShowForCreate();
         }
 
@@ -38,6 +43,11 @@ namespace AutoschoolAIS.Components.Lesson
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
+            if (!Env.Auth.HasRole("admin"))
+            {
+                MessageBox.Show("Данная функция доступна для пользователя с ролью admin.");
+                return;
+            }
             if (tableView.SelectedId != null)
             {
                 Env.Db.Query("Lesson").Where("Id", tableView.SelectedId).Delete();
