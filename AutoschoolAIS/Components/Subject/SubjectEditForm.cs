@@ -38,6 +38,19 @@ namespace AutoschoolAIS.Components.Subject
 
         private bool ValidateForm()
         {
+            var m = Env.Messages.Clear();
+
+            if (nameTB.Text == "")
+            {
+                m.AddError("Название должно быть заполнено.");
+            }
+
+            if (m.HasErrors)
+            {
+                m.Show();
+                return false;
+            }
+
             return true;
         }
 

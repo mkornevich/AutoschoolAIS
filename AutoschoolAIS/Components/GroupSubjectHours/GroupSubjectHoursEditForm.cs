@@ -41,13 +41,46 @@ namespace AutoschoolAIS.Components.GroupSubjectHours
 
         private bool ValidateForm()
         {
+            var m = Env.Messages.Clear();
+
+            if (subjectIC.Id == null)
+            {
+                m.AddError("Предмет должен быть указан.");
+            }
+
+            if (hoursNUD.Value <= 0)
+            {
+                m.AddError("Кол-во часов должно быть больше 0.");
+            }
+
+            if (m.HasErrors)
+            {
+                m.Show();
+                return false;
+            }
+
+            if (Env.Db.Query("GroupSubjectHours")
+                .Where("Id", "<>", _identity)
+                .Where("GroupId", _row["GroupId"])
+                .Where("SubjectId", subjectIC.Id)
+                .Exists())
+            {
+                m.AddError("Для данной группы такой предмет уже задан.");
+            }
+
+            if (m.HasErrors)
+            {
+                m.Show();
+                return false;
+            }
+
             return true;
         }
 
         private void LoadDataRow()
         {
             _row = Env.Db.Query("GroupSubjectHours")
-                .Select("Group.Name AS GroupName", "SubjectId", "Hours")
+                .Select("Group.Name AS GroupName", "GroupId", "SubjectId", "Hours")
                 .LeftJoin("Group", "Group.Id", "GroupId")
                 .Where("GroupSubjectHours.Id", _identity)
                 .First();
@@ -56,6 +89,7 @@ namespace AutoschoolAIS.Components.GroupSubjectHours
         private void StoreDataRow()
         {
             _row.Remove("GroupName");
+            _row.Remove("GroupId");
             Env.Db.Query("GroupSubjectHours")
                 .Where("Id", _identity)
                 .Update(_row);
@@ -84,11 +118,6 @@ namespace AutoschoolAIS.Components.GroupSubjectHours
                 Close();
                 Env.Change.OnDatabaseChanged();
             }
-        }
-
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

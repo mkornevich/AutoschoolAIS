@@ -50,6 +50,34 @@ namespace AutoschoolAIS.Components.User
 
         private bool ValidateForm()
         {
+            var m = Env.Messages.Clear();
+
+            if (emailTB.Text == "")
+            {
+                m.AddError("Пожалуйста укажите почту.");
+            }
+
+            if (Env.Db.Query("User").Where("Email", emailTB.Text).Where("Id", "<>" , _identity).FirstOrDefault() != null) 
+            {
+                m.AddError("Пользователь с такой почтой уже существует.");
+            }
+
+            if (nameTB.Text == "")
+            {
+                m.AddError("Имя не должно быть пустым.");
+            }
+
+            if (passwordTB.Text == "")
+            {
+                m.AddError("Пароль не должен быть пустым.");
+            }
+
+            if (m.HasErrors)
+            {
+                m.Show();
+                return false;
+            }
+
             return true;
         }
 

@@ -10,6 +10,10 @@ namespace AutoschoolAIS.Services.Messages
     {
         private List<Message> Messages { get; } = new List<Message>();
 
+        public int ErrorCount => Messages.Count(m => m.Type == MessageType.Error);
+
+        public bool HasErrors => ErrorCount > 0;
+
         public MessagesService Clear()
         {
             Messages.Clear();

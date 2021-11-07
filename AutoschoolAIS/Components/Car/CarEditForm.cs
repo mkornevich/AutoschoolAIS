@@ -38,6 +38,24 @@ namespace AutoschoolAIS.Components.Car
 
         private bool ValidateForm()
         {
+            var m = Env.Messages.Clear();
+
+            if (nameTB.Text == "")
+            {
+                m.AddError("Название не должно быть пустым.");
+            }
+
+            if (numberTB.Text == "")
+            {
+                m.AddError("Номер не должен быть пустым.");
+            }
+
+            if (m.HasErrors)
+            {
+                m.Show();
+                return false;
+            }
+
             return true;
         }
 

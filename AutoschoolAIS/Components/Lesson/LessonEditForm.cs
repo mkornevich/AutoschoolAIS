@@ -50,6 +50,29 @@ namespace AutoschoolAIS.Components.Lesson
 
         private bool ValidateForm()
         {
+            var m = Env.Messages.Clear();
+
+            if (studentIC.Id == null)
+            {
+                m.AddError("Необходимо указать студента.");
+            }
+
+            if (teacherIC.Id == null)
+            {
+                m.AddError("Необходимо указать учителя.");
+            }
+
+            if (hoursNUD.Value <= 0)
+            {
+                m.AddError("Количество часов должно быть больше 0.");
+            }
+
+            if (m.HasErrors)
+            {
+                m.Show();
+                return false;
+            }
+
             return true;
         }
 

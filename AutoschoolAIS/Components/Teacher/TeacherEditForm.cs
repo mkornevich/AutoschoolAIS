@@ -49,11 +49,29 @@ namespace AutoschoolAIS.Components.Teacher
             _row["SubjectId"] = subjectIC.Id;
             _row["PinnedCarId"] = pinnedCarIC.Id;
             _row["IsWorked"] = isWorkedCB.Checked;
-            _row["CreatedAt"] = createdAtDTP.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            _row["CreatedAt"] = createdAtDTP.Value.ToString(Env.SqlDateTimeFormat);
         }
 
         private bool ValidateForm()
         {
+            var m = Env.Messages.Clear();
+
+            if (userIC.Id == null)
+            {
+                m.AddError("Необходимо указать пользователя.");
+            }
+
+            if (subjectIC.Id == null)
+            {
+                m.AddError("Необходимо указать предмет.");
+            }
+
+            if (m.HasErrors)
+            {
+                m.Show();
+                return false;
+            }
+
             return true;
         }
 

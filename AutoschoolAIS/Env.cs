@@ -1,6 +1,7 @@
 ﻿using AutoschoolAIS.Components.Main;
 using AutoschoolAIS.Services;
 using AutoschoolAIS.Services.Auth;
+using AutoschoolAIS.Services.Messages;
 using AutoschoolAIS.Services.Report;
 using System;
 using System.Collections.Generic;
@@ -32,12 +33,15 @@ namespace AutoschoolAIS
 
         public static ReportService Report { get; private set; }
 
+        public static MessagesService Messages { get; private set; }
+
         public static void Init()
         {
             Change = new ChangeService();
             Db = new DatabaseService(ConnectionString);
             Auth = new AuthService();
             Report = new ReportService();
+            Messages = new MessagesService();
 
             MainForm = new MainForm();
         }

@@ -44,6 +44,24 @@ namespace AutoschoolAIS.Components.Group
 
         private bool ValidateForm()
         {
+            var m = Env.Messages.Clear();
+
+            if (nameTB.Text == "")
+            {
+                m.AddError("Название группы не должно быть пустым.");
+            }
+
+            if (startAtDTP.Value >= endAtDTP.Value)
+            {
+                m.AddError("Дата начала должна быть меньше даты окончания.");
+            }
+
+            if (m.HasErrors)
+            {
+                m.Show();
+                return false;
+            }
+
             return true;
         }
 

@@ -45,6 +45,35 @@ namespace AutoschoolAIS.Components.Student
 
         private bool ValidateForm()
         {
+            var m = Env.Messages.Clear();
+
+            if (userIC.Id == null)
+            {
+                m.AddError("Необходимо выбрать пользователя.");
+            }
+
+            if (groupIC.Id == null)
+            {
+                m.AddError("Необходимо выбрать группу.");
+            }
+
+            if (m.HasErrors)
+            {
+                m.Show();
+                return false;
+            }
+
+            if (Env.Db.Query("Student").Where("Id", "<>", _identity).Where("GroupId", groupIC.Id).Where("UserId", userIC.Id).Exists())
+            {
+                m.AddError("Студент под таким пользователем и в такой группе уже есть.");
+            }
+
+            if (m.HasErrors)
+            {
+                m.Show();
+                return false;
+            }
+
             return true;
         }
 
