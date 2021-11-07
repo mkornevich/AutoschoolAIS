@@ -26,7 +26,7 @@ namespace AutoschoolAIS.Components.Main
             Env.Auth.UserChanged += UserChangedAct;
 
             // here is auto auth
-            Env.Auth.TryAuthenticate("admin@gmail.ru", "a");
+            // Env.Auth.TryAuthenticate("admin@gmail.ru", "a");
         }
 
         private void UserChangedAct()
