@@ -33,7 +33,6 @@ namespace AutoschoolAIS.Components.Teacher
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.okBtn = new System.Windows.Forms.ToolStripButton();
-            this.cancelBtn = new System.Windows.Forms.ToolStripButton();
             this.userIC = new AutoschoolAIS.Controls.IdsChooser();
             this.label2 = new System.Windows.Forms.Label();
             this.subjectIC = new AutoschoolAIS.Controls.IdsChooser();
@@ -57,8 +56,7 @@ namespace AutoschoolAIS.Components.Teacher
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.okBtn,
-            this.cancelBtn});
+            this.okBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(256, 25);
@@ -75,16 +73,6 @@ namespace AutoschoolAIS.Components.Teacher
             this.okBtn.Text = "Записать";
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
-            // cancelBtn
-            // 
-            this.cancelBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cancelBtn.Image = global::AutoschoolAIS.Properties.Resources.error_16;
-            this.cancelBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(23, 22);
-            this.cancelBtn.Text = "Отмена";
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
-            // 
             // userIC
             // 
             this.userIC.BackColor = System.Drawing.SystemColors.Window;
@@ -98,6 +86,7 @@ namespace AutoschoolAIS.Components.Teacher
             this.userIC.Size = new System.Drawing.Size(232, 20);
             this.userIC.SqlGetTextById = null;
             this.userIC.TabIndex = 6;
+            this.userIC.Text = "Пусто";
             // 
             // label2
             // 
@@ -121,6 +110,7 @@ namespace AutoschoolAIS.Components.Teacher
             this.subjectIC.Size = new System.Drawing.Size(232, 20);
             this.subjectIC.SqlGetTextById = null;
             this.subjectIC.TabIndex = 7;
+            this.subjectIC.Text = "Пусто";
             // 
             // label3
             // 
@@ -144,6 +134,7 @@ namespace AutoschoolAIS.Components.Teacher
             this.pinnedCarIC.Size = new System.Drawing.Size(232, 20);
             this.pinnedCarIC.SqlGetTextById = null;
             this.pinnedCarIC.TabIndex = 8;
+            this.pinnedCarIC.Text = "Пусто";
             // 
             // isWorkedCB
             // 
@@ -204,7 +195,6 @@ namespace AutoschoolAIS.Components.Teacher
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton okBtn;
-        private System.Windows.Forms.ToolStripButton cancelBtn;
         private Controls.IdsChooser userIC;
         private System.Windows.Forms.Label label2;
         private Controls.IdsChooser subjectIC;

@@ -32,7 +32,6 @@ namespace AutoschoolAIS.Components.User
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserEditForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.okBtn = new System.Windows.Forms.ToolStripButton();
-            this.cancelBtn = new System.Windows.Forms.ToolStripButton();
             this.nameTB = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.emailTB = new System.Windows.Forms.TextBox();
@@ -48,8 +47,7 @@ namespace AutoschoolAIS.Components.User
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.okBtn,
-            this.cancelBtn});
+            this.okBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(322, 25);
@@ -65,16 +63,6 @@ namespace AutoschoolAIS.Components.User
             this.okBtn.Size = new System.Drawing.Size(23, 22);
             this.okBtn.Text = "Записать";
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cancelBtn.Image = global::AutoschoolAIS.Properties.Resources.error_16;
-            this.cancelBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(23, 22);
-            this.cancelBtn.Text = "Отмена";
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // nameTB
             // 
@@ -189,7 +177,6 @@ namespace AutoschoolAIS.Components.User
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton okBtn;
-        private System.Windows.Forms.ToolStripButton cancelBtn;
         private System.Windows.Forms.TextBox nameTB;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox emailTB;

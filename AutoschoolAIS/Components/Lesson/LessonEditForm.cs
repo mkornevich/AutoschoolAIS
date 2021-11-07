@@ -92,10 +92,5 @@ namespace AutoschoolAIS.Components.Lesson
                 Env.Change.OnDatabaseChanged();
             }
         }
-
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }

@@ -88,11 +88,6 @@ namespace AutoschoolAIS.Components.Group
             }
         }
 
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void ReloadGroupSubjectHoursTable()
         {
             groupSubjectHoursTV.DataSourceDynamic = Env.Db.Query("GroupSubjectHours AS GSH")

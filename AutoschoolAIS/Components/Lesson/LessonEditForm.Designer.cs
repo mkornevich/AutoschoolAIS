@@ -40,7 +40,6 @@ namespace AutoschoolAIS.Components.Lesson
             this.label4 = new System.Windows.Forms.Label();
             this.startAtDTP = new System.Windows.Forms.DateTimePicker();
             this.okBtn = new System.Windows.Forms.ToolStripButton();
-            this.cancelBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             ((System.ComponentModel.ISupportInitialize)(this.hoursNUD)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -146,21 +145,10 @@ namespace AutoschoolAIS.Components.Lesson
             this.okBtn.Text = "Записать";
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
-            // cancelBtn
-            // 
-            this.cancelBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cancelBtn.Image = global::AutoschoolAIS.Properties.Resources.error_16;
-            this.cancelBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(23, 22);
-            this.cancelBtn.Text = "Отмена";
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.okBtn,
-            this.cancelBtn});
+            this.okBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(216, 25);
@@ -208,7 +196,6 @@ namespace AutoschoolAIS.Components.Lesson
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker startAtDTP;
         private System.Windows.Forms.ToolStripButton okBtn;
-        private System.Windows.Forms.ToolStripButton cancelBtn;
         private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }

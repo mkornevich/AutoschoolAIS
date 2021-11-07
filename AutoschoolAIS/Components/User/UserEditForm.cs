@@ -93,11 +93,6 @@ namespace AutoschoolAIS.Components.User
             }
         }
 
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void passwordVisibleCB_CheckedChanged(object sender, EventArgs e)
         {
             passwordTB.PasswordChar = passwordVisibleCB.Checked ? '\0' : '*';

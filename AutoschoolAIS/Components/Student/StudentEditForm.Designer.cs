@@ -34,7 +34,6 @@ namespace AutoschoolAIS.Components.Student
             this.label2 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.okBtn = new System.Windows.Forms.ToolStripButton();
-            this.cancelBtn = new System.Windows.Forms.ToolStripButton();
             this.userIC = new AutoschoolAIS.Controls.IdsChooser();
             this.groupIC = new AutoschoolAIS.Controls.IdsChooser();
             this.toolStrip1.SuspendLayout();
@@ -61,8 +60,7 @@ namespace AutoschoolAIS.Components.Student
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.okBtn,
-            this.cancelBtn});
+            this.okBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(284, 25);
@@ -79,21 +77,14 @@ namespace AutoschoolAIS.Components.Student
             this.okBtn.Text = "Записать";
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
-            // cancelBtn
-            // 
-            this.cancelBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cancelBtn.Image = global::AutoschoolAIS.Properties.Resources.error_16;
-            this.cancelBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(23, 22);
-            this.cancelBtn.Text = "Отмена";
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
-            // 
             // userIC
             // 
             this.userIC.BackColor = System.Drawing.SystemColors.Window;
             this.userIC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.userIC.GetTextById = null;
+            this.userIC.Id = null;
             this.userIC.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("userIC.Ids")));
+            this.userIC.IsMultiselect = false;
             this.userIC.Location = new System.Drawing.Point(12, 41);
             this.userIC.Name = "userIC";
             this.userIC.Size = new System.Drawing.Size(260, 20);
@@ -105,7 +96,10 @@ namespace AutoschoolAIS.Components.Student
             // 
             this.groupIC.BackColor = System.Drawing.SystemColors.Window;
             this.groupIC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.groupIC.GetTextById = null;
+            this.groupIC.Id = null;
             this.groupIC.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("groupIC.Ids")));
+            this.groupIC.IsMultiselect = false;
             this.groupIC.Location = new System.Drawing.Point(12, 80);
             this.groupIC.Name = "groupIC";
             this.groupIC.Size = new System.Drawing.Size(260, 20);
@@ -141,7 +135,6 @@ namespace AutoschoolAIS.Components.Student
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton okBtn;
-        private System.Windows.Forms.ToolStripButton cancelBtn;
         private Controls.IdsChooser userIC;
         private Controls.IdsChooser groupIC;
     }

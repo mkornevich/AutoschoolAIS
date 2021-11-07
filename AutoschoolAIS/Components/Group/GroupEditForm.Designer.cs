@@ -31,6 +31,7 @@ namespace AutoschoolAIS.Components.Group
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GroupEditForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.okBtn = new System.Windows.Forms.ToolStripButton();
             this.nameTB = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,33 +42,40 @@ namespace AutoschoolAIS.Components.Group
             this.endAtDTP = new System.Windows.Forms.DateTimePicker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.createGroupSubjectHoursBtn = new System.Windows.Forms.ToolStripButton();
-            this.deleteGroupSubjectHoursBtn = new System.Windows.Forms.ToolStripButton();
-            this.editGroupSubjectHoursBtn = new System.Windows.Forms.ToolStripButton();
-            this.okBtn = new System.Windows.Forms.ToolStripButton();
-            this.cancelBtn = new System.Windows.Forms.ToolStripButton();
             this.groupSubjectHoursTV = new AutoschoolAIS.Controls.TableView();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubjectNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoursColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.createGroupSubjectHoursBtn = new System.Windows.Forms.ToolStripButton();
+            this.deleteGroupSubjectHoursBtn = new System.Windows.Forms.ToolStripButton();
+            this.editGroupSubjectHoursBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupSubjectHoursTV)).BeginInit();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.okBtn,
-            this.cancelBtn});
+            this.okBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(611, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // okBtn
+            // 
+            this.okBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.okBtn.Image = global::AutoschoolAIS.Properties.Resources.ok_16;
+            this.okBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.okBtn.Name = "okBtn";
+            this.okBtn.Size = new System.Drawing.Size(23, 22);
+            this.okBtn.Text = "toolStripButton1";
+            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // nameTB
             // 
@@ -170,6 +178,54 @@ namespace AutoschoolAIS.Components.Group
             this.tabPage1.Text = "Часы по предметам";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupSubjectHoursTV
+            // 
+            this.groupSubjectHoursTV.AllowUserToAddRows = false;
+            this.groupSubjectHoursTV.AllowUserToDeleteRows = false;
+            this.groupSubjectHoursTV.AllowUserToResizeRows = false;
+            this.groupSubjectHoursTV.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.groupSubjectHoursTV.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.groupSubjectHoursTV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.groupSubjectHoursTV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdColumn,
+            this.SubjectNameColumn,
+            this.HoursColumn});
+            this.groupSubjectHoursTV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupSubjectHoursTV.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("groupSubjectHoursTV.Ids")));
+            this.groupSubjectHoursTV.IsMultiselect = false;
+            this.groupSubjectHoursTV.Location = new System.Drawing.Point(3, 28);
+            this.groupSubjectHoursTV.MultiSelect = false;
+            this.groupSubjectHoursTV.Name = "groupSubjectHoursTV";
+            this.groupSubjectHoursTV.ReadOnly = true;
+            this.groupSubjectHoursTV.RowHeadersVisible = false;
+            this.groupSubjectHoursTV.SelectedId = null;
+            this.groupSubjectHoursTV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.groupSubjectHoursTV.Size = new System.Drawing.Size(573, 188);
+            this.groupSubjectHoursTV.TabIndex = 4;
+            // 
+            // IdColumn
+            // 
+            this.IdColumn.DataPropertyName = "Id";
+            this.IdColumn.HeaderText = "Id";
+            this.IdColumn.Name = "IdColumn";
+            this.IdColumn.ReadOnly = true;
+            this.IdColumn.Visible = false;
+            // 
+            // SubjectNameColumn
+            // 
+            this.SubjectNameColumn.DataPropertyName = "SubjectName";
+            this.SubjectNameColumn.HeaderText = "Предмет";
+            this.SubjectNameColumn.Name = "SubjectNameColumn";
+            this.SubjectNameColumn.ReadOnly = true;
+            this.SubjectNameColumn.Width = 200;
+            // 
+            // HoursColumn
+            // 
+            this.HoursColumn.DataPropertyName = "Hours";
+            this.HoursColumn.HeaderText = "Кол-во часов";
+            this.HoursColumn.Name = "HoursColumn";
+            this.HoursColumn.ReadOnly = true;
+            // 
             // toolStrip2
             // 
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -208,73 +264,6 @@ namespace AutoschoolAIS.Components.Group
             this.editGroupSubjectHoursBtn.Text = "toolStripButton4";
             this.editGroupSubjectHoursBtn.Click += new System.EventHandler(this.editGroupSubjectHoursBtn_Click);
             // 
-            // okBtn
-            // 
-            this.okBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.okBtn.Image = global::AutoschoolAIS.Properties.Resources.ok_16;
-            this.okBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(23, 22);
-            this.okBtn.Text = "toolStripButton1";
-            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cancelBtn.Image = global::AutoschoolAIS.Properties.Resources.error_16;
-            this.cancelBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(23, 22);
-            this.cancelBtn.Text = "toolStripButton2";
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
-            // 
-            // groupSubjectHoursTV
-            // 
-            this.groupSubjectHoursTV.AllowUserToAddRows = false;
-            this.groupSubjectHoursTV.AllowUserToDeleteRows = false;
-            this.groupSubjectHoursTV.AllowUserToResizeRows = false;
-            this.groupSubjectHoursTV.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.groupSubjectHoursTV.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.groupSubjectHoursTV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.groupSubjectHoursTV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdColumn,
-            this.SubjectNameColumn,
-            this.HoursColumn});
-            this.groupSubjectHoursTV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupSubjectHoursTV.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("groupSubjectHoursTV.Ids")));
-            this.groupSubjectHoursTV.IsMultiselect = false;
-            this.groupSubjectHoursTV.Location = new System.Drawing.Point(3, 28);
-            this.groupSubjectHoursTV.MultiSelect = false;
-            this.groupSubjectHoursTV.Name = "groupSubjectHoursTV";
-            this.groupSubjectHoursTV.ReadOnly = true;
-            this.groupSubjectHoursTV.RowHeadersVisible = false;
-            this.groupSubjectHoursTV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.groupSubjectHoursTV.Size = new System.Drawing.Size(573, 188);
-            this.groupSubjectHoursTV.TabIndex = 4;
-            // 
-            // IdColumn
-            // 
-            this.IdColumn.DataPropertyName = "Id";
-            this.IdColumn.HeaderText = "Id";
-            this.IdColumn.Name = "IdColumn";
-            this.IdColumn.ReadOnly = true;
-            this.IdColumn.Visible = false;
-            // 
-            // SubjectNameColumn
-            // 
-            this.SubjectNameColumn.DataPropertyName = "SubjectName";
-            this.SubjectNameColumn.HeaderText = "Предмет";
-            this.SubjectNameColumn.Name = "SubjectNameColumn";
-            this.SubjectNameColumn.ReadOnly = true;
-            this.SubjectNameColumn.Width = 200;
-            // 
-            // HoursColumn
-            // 
-            this.HoursColumn.DataPropertyName = "Hours";
-            this.HoursColumn.HeaderText = "Кол-во часов";
-            this.HoursColumn.Name = "HoursColumn";
-            this.HoursColumn.ReadOnly = true;
-            // 
             // GroupEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,9 +289,9 @@ namespace AutoschoolAIS.Components.Group
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupSubjectHoursTV)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupSubjectHoursTV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,7 +301,6 @@ namespace AutoschoolAIS.Components.Group
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton okBtn;
-        private System.Windows.Forms.ToolStripButton cancelBtn;
         private System.Windows.Forms.TextBox nameTB;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
