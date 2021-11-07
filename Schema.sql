@@ -117,3 +117,43 @@ LEFT JOIN Student ON Student.Id = T1.StudentId
 LEFT JOIN [User] AS StudentUser ON StudentUser.Id = Student.UserId
 
 --ORDER BY GroupId, StudentName, SubjectName
+
+GO
+
+CREATE TRIGGER UserInsert ON [User]
+AFTER INSERT AS
+INSERT INTO [Event](ObjectId, ObjectType, EventType, [Description], CreatedAt)
+SELECT
+	U.Id,
+	N'User',
+	N'Trigger',
+	CONCAT(N'Добавлен пользователь ', U.[Name]),
+	GETDATE()
+FROM INSERTED AS U;
+
+GO
+
+CREATE TRIGGER UserDelete ON [User]
+AFTER DELETE AS
+INSERT INTO [Event](ObjectId, ObjectType, EventType, [Description], CreatedAt)
+SELECT
+	U.Id,
+	N'User',
+	N'Trigger',
+	CONCAT(N'Удален пользователь ', U.[Name]),
+	GETDATE()
+FROM DELETED AS U;
+
+GO
+
+CREATE TRIGGER UserUpdate ON [User]
+AFTER UPDATE AS
+INSERT INTO [Event](ObjectId, ObjectType, EventType, [Description], CreatedAt)
+SELECT
+	DU.Id,
+	N'User',
+	N'Trigger',
+	CONCAT(N'Пользователь отредактирован ', DU.[Name], ' -> ', IU.[Name]),
+	GETDATE()
+FROM DELETED AS DU
+LEFT JOIN INSERTED AS IU ON IU.Id = DU.Id
