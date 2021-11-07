@@ -40,6 +40,16 @@ namespace AutoschoolAIS.Components.Group
                 );
             }
 
+            if (fromDTP.Checked)
+            {
+                q.Where("StartAt", ">=", fromDTP.Value.ToString(Env.SqlDateTimeFormat));
+            }
+
+            if (toDTP.Checked)
+            {
+                q.Where("EndAt", "<=", toDTP.Value.ToString(Env.SqlDateTimeFormat));
+            }
+
             _tableView.DataSourceDynamic = q.Get();
         }
     }

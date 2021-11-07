@@ -26,9 +26,6 @@ namespace AutoschoolAIS.Components.Teacher
                 e.Cancel = true;
                 Hide();
             };
-
-            //groupIC.GetTextById = (id) => Env.Db.Query("Group").Where("Id", id).First().Name;
-            //groupIC.BuildTableViewWithForm = () => new GroupListForm().tableView;
         }
 
         public void ReloadTable()
@@ -46,18 +43,10 @@ namespace AutoschoolAIS.Components.Teacher
                 .LeftJoin("Subject", "Subject.Id", "SubjectId")
                 .LeftJoin("Car", "Car.Id", "PinnedCarId");
 
-            if (searchTB.Text != "")
+            if (isWorkedCB.Text != "")
             {
-                q.Where(qq => qq
-                    .Where("User.Name", "LIKE", "%" + searchTB.Text + "%")
-                    .OrWhere("Subject.Name", "LIKE", "%" + searchTB.Text + "%")
-                );
+                q.Where("IsWorked", isWorkedCB.Text == "Работает");
             }
-
-            //if (groupIC.Ids.Count > 0)
-            //{
-            //    q.WhereIn("GroupId", groupIC.Ids);
-            //}
 
             _tableView.DataSourceDynamic = q.Get();
         }

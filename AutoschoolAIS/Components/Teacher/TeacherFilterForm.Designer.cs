@@ -31,6 +31,8 @@ namespace AutoschoolAIS.Components.Teacher
         {
             this.label1 = new System.Windows.Forms.Label();
             this.searchTB = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.isWorkedCB = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -49,11 +51,34 @@ namespace AutoschoolAIS.Components.Teacher
             this.searchTB.Size = new System.Drawing.Size(216, 20);
             this.searchTB.TabIndex = 2;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Работает";
+            // 
+            // isWorkedCB
+            // 
+            this.isWorkedCB.FormattingEnabled = true;
+            this.isWorkedCB.Items.AddRange(new object[] {
+            "",
+            "Работает",
+            "Не работает"});
+            this.isWorkedCB.Location = new System.Drawing.Point(12, 64);
+            this.isWorkedCB.Name = "isWorkedCB";
+            this.isWorkedCB.Size = new System.Drawing.Size(216, 21);
+            this.isWorkedCB.TabIndex = 5;
+            // 
             // TeacherFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(240, 59);
+            this.ClientSize = new System.Drawing.Size(240, 99);
+            this.Controls.Add(this.isWorkedCB);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchTB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -70,5 +95,7 @@ namespace AutoschoolAIS.Components.Teacher
 
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox searchTB;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox isWorkedCB;
     }
 }

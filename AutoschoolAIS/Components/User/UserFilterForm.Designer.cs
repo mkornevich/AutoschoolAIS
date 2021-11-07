@@ -31,6 +31,8 @@ namespace AutoschoolAIS.Components.User
         {
             this.label1 = new System.Windows.Forms.Label();
             this.searchTB = new System.Windows.Forms.TextBox();
+            this.roleCB = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -49,11 +51,35 @@ namespace AutoschoolAIS.Components.User
             this.searchTB.Size = new System.Drawing.Size(215, 20);
             this.searchTB.TabIndex = 2;
             // 
+            // roleCB
+            // 
+            this.roleCB.FormattingEnabled = true;
+            this.roleCB.Items.AddRange(new object[] {
+            "",
+            "admin",
+            "viewer",
+            "guest"});
+            this.roleCB.Location = new System.Drawing.Point(12, 64);
+            this.roleCB.Name = "roleCB";
+            this.roleCB.Size = new System.Drawing.Size(215, 21);
+            this.roleCB.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Роль";
+            // 
             // UserFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(240, 58);
+            this.ClientSize = new System.Drawing.Size(240, 101);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.roleCB);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchTB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -70,5 +96,7 @@ namespace AutoschoolAIS.Components.User
 
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox searchTB;
+        private System.Windows.Forms.ComboBox roleCB;
+        private System.Windows.Forms.Label label2;
     }
 }

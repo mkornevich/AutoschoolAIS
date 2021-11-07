@@ -41,6 +41,11 @@ namespace AutoschoolAIS.Components.User
                 );
             }
 
+            if (roleCB.Text != "")
+            {
+                q.Where("Role", roleCB.Text);
+            }
+
             _tableView.DataSourceDynamic = q.Get();
         }
     }

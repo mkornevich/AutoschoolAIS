@@ -68,7 +68,7 @@ namespace AutoschoolAIS.Components.Student
             this.groupIC.GetTextById = null;
             this.groupIC.Id = null;
             this.groupIC.Ids = ((System.Collections.Generic.List<int>)(resources.GetObject("groupIC.Ids")));
-            this.groupIC.IsMultiselect = false;
+            this.groupIC.IsMultiselect = true;
             this.groupIC.Location = new System.Drawing.Point(12, 64);
             this.groupIC.Name = "groupIC";
             this.groupIC.Size = new System.Drawing.Size(215, 20);

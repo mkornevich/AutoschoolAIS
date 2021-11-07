@@ -35,9 +35,9 @@ namespace AutoschoolAIS.Components.Car
             if (searchTB.Text != "")
             {
                 q.Where(qq => qq
-                .Where("Name", "LIKE", "%" + searchTB.Text + "%")
-                .OrWhere("Number", "LIKE", "%" + searchTB.Text + "%")
-                .OrWhere("Comment", "LIKE", "%" + searchTB.Text + "%")
+                    .Where("Name", "LIKE", "%" + searchTB.Text + "%")
+                    .OrWhere("Number", "LIKE", "%" + searchTB.Text + "%")
+                    .OrWhere("Comment", "LIKE", "%" + searchTB.Text + "%")
                 );
             }
 

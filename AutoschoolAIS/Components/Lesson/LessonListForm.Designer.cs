@@ -41,7 +41,9 @@ namespace AutoschoolAIS.Components.Lesson
             this.reloadBtn = new System.Windows.Forms.ToolStripButton();
             this.tableView = new AutoschoolAIS.Controls.TableView();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GroupNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubjectNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TeacherNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsPassedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoursColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +65,7 @@ namespace AutoschoolAIS.Components.Lesson
             this.reloadBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1081, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -106,7 +108,6 @@ namespace AutoschoolAIS.Components.Lesson
             // 
             // searchTB
             // 
-            this.searchTB.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.searchTB.Name = "searchTB";
             this.searchTB.Size = new System.Drawing.Size(100, 25);
             this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
@@ -141,7 +142,9 @@ namespace AutoschoolAIS.Components.Lesson
             this.tableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdColumn,
+            this.GroupNameColumn,
             this.StudentNameColumn,
+            this.SubjectNameColumn,
             this.TeacherNameColumn,
             this.IsPassedColumn,
             this.HoursColumn,
@@ -156,7 +159,7 @@ namespace AutoschoolAIS.Components.Lesson
             this.tableView.RowHeadersVisible = false;
             this.tableView.SelectedId = null;
             this.tableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableView.Size = new System.Drawing.Size(800, 425);
+            this.tableView.Size = new System.Drawing.Size(1081, 425);
             this.tableView.TabIndex = 4;
             // 
             // IdColumn
@@ -167,6 +170,14 @@ namespace AutoschoolAIS.Components.Lesson
             this.IdColumn.ReadOnly = true;
             this.IdColumn.Visible = false;
             // 
+            // GroupNameColumn
+            // 
+            this.GroupNameColumn.DataPropertyName = "GroupName";
+            this.GroupNameColumn.HeaderText = "Группа";
+            this.GroupNameColumn.Name = "GroupNameColumn";
+            this.GroupNameColumn.ReadOnly = true;
+            this.GroupNameColumn.Width = 70;
+            // 
             // StudentNameColumn
             // 
             this.StudentNameColumn.DataPropertyName = "StudentName";
@@ -174,6 +185,14 @@ namespace AutoschoolAIS.Components.Lesson
             this.StudentNameColumn.Name = "StudentNameColumn";
             this.StudentNameColumn.ReadOnly = true;
             this.StudentNameColumn.Width = 200;
+            // 
+            // SubjectNameColumn
+            // 
+            this.SubjectNameColumn.DataPropertyName = "SubjectName";
+            this.SubjectNameColumn.HeaderText = "Предмет";
+            this.SubjectNameColumn.Name = "SubjectNameColumn";
+            this.SubjectNameColumn.ReadOnly = true;
+            this.SubjectNameColumn.Width = 150;
             // 
             // TeacherNameColumn
             // 
@@ -189,13 +208,15 @@ namespace AutoschoolAIS.Components.Lesson
             this.IsPassedColumn.HeaderText = "Пройден";
             this.IsPassedColumn.Name = "IsPassedColumn";
             this.IsPassedColumn.ReadOnly = true;
+            this.IsPassedColumn.Width = 60;
             // 
             // HoursColumn
             // 
             this.HoursColumn.DataPropertyName = "Hours";
-            this.HoursColumn.HeaderText = "Кол-во часов";
+            this.HoursColumn.HeaderText = "Часов";
             this.HoursColumn.Name = "HoursColumn";
             this.HoursColumn.ReadOnly = true;
+            this.HoursColumn.Width = 50;
             // 
             // StartAtColumn
             // 
@@ -209,7 +230,7 @@ namespace AutoschoolAIS.Components.Lesson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1081, 450);
             this.Controls.Add(this.tableView);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -236,7 +257,9 @@ namespace AutoschoolAIS.Components.Lesson
         private System.Windows.Forms.ToolStripButton reloadBtn;
         private Controls.TableView tableView;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GroupNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubjectNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TeacherNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsPassedColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoursColumn;
